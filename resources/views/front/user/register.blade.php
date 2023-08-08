@@ -107,9 +107,9 @@
                                     </a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Profile</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'eng']) }}" style="text-decoration: none;">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Logout</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'eng']) }}" style="text-decoration: none;">Logout</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -123,9 +123,9 @@
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'esp']) }}" style="text-decoration: none;">Perfil</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Salir</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'esp']) }}" style="text-decoration: none;">Salir</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -165,7 +165,7 @@
 			<div class="container">
 		
 				<div class="col-12 bg-white d-flex flex-column flex-md-row my-5 my-md-0" style=" min-height:700px; box-shadow:1px 1px 10px rgba(0, 0, 0, 0.237); border-radius:26px;">
-					<form method="POST" action="{{ route('user.signup') }}" class="col-12 col-md-7  d-flex justify-content-center align-items-center" style="background:;">
+					<form method="POST" action="{{ route('user.signup', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="col-12 col-md-7  d-flex justify-content-center align-items-center" style="background:;">
 						@csrf
 						<div class="col-12 p-4 bg-white d-flex justify-content-center align-items-center flex-column text-center">
 							<h4 class="mb-5">
@@ -201,7 +201,7 @@
 								<button type="submit" id="register_btn" class="col-12 btn btn-primary" style="border-radius:10px; background-color: #3378C6; border:none;" >{{ ($leng == 'eng') ? 'Sign Up' : 'Registrarse' }}</button>
 							</div>
 							<div class="col-12 col-md-10 col-lg-7 mb-3">
-								<p>{{ ($leng == 'eng') ? 'I have an account' : 'Ya tengo una cuenta' }} <a href="{{url('login')}}" class="" uk-toggle>{{ ($leng == 'eng') ? 'Sign In' : 'Ingresar' }}</a></p>
+								<p>{{ ($leng == 'eng') ? 'I have an account' : 'Ya tengo una cuenta' }} <a href="{{ route('user.login', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="" uk-toggle>{{ ($leng == 'eng') ? 'Sign In' : 'Ingresar' }}</a></p>
 							</div>
 						</div>
 					</form>

@@ -43,11 +43,11 @@ Route::name('front.')->group(function(){
 
 // USUARIOS (LOGIN REGISTER)
 Route::get('/register/{leng?}', 'UserController@getRegister')->name('user.register')->middleware('guest');
-Route::post('/signup', 'UserController@postSignup')->name('user.signup')->middleware('guest');
+Route::post('/signup/{leng?}', 'UserController@postSignup')->name('user.signup')->middleware('guest');
 Route::get('/login/{leng?}', 'UserController@getLogin')->name('user.login')->middleware('guest');
-Route::post('/signin', 'UserController@postSignin')->name('user.signin')->middleware('guest');
-Route::get('/perfil', 'UserController@getProfile')->name('user.profile')->middleware('auth');
-Route::get('/logout', 'UserController@getLogout')->name('user.logout')->middleware('auth');
+Route::post('/signin/{leng?}', 'UserController@postSignin')->name('user.signin')->middleware('guest');
+Route::get('/perfil/{leng?}', 'UserController@getProfile')->name('user.profile')->middleware('auth');
+Route::get('/logout/{leng?}', 'UserController@getLogout')->name('user.logout')->middleware('auth');
 
 // CARRITO DE COMPRAS
 Route::get('/add-to-cart/{id}', 'CarritoController@getAddToCart')->name('addToCart')->middleware('auth');

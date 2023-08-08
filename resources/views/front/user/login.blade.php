@@ -154,7 +154,7 @@
 					<div class="col-12">
 						<div class="card-body">
 							<h5 class="card-title text-center">{{ ($leng == 'eng') ? __('Login') :  __('Iniciar Sesión') }}</h5>
-							<form method="POST" action="{{ route('user.signin') }}">
+							<form method="POST" action="{{ route('user.signin', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}">
 								@csrf
 								<div class="form-group mb-2">
 									<label for="email" class="text-md-right">{{ ($leng == 'eng') ? __('Email') :  __('Correo') }}</label>

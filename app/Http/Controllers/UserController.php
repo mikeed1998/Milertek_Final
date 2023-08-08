@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
+use Session;
 use App\User;
 use App\Domicilio;
 use App\Factura;
@@ -19,7 +21,7 @@ class UserController extends Controller
 	}
 
 
-	public function postSignup(Request $request) {
+	public function postSignup(Request $request, $leng = 'esp') {
 		$this->validate($request, [
 			'email' => 'email|required|unique:users',
 			'password' => 'required|min:4'
@@ -40,7 +42,7 @@ class UserController extends Controller
 			return redirect()->to($oldUrl);
 		}
 
-		return redirect()->route('user.profile');
+		return redirect()->route('user.profile', ['leng' => $leng]);
 	}
 
 	public function getLogin($leng = 'esp') {
@@ -49,7 +51,7 @@ class UserController extends Controller
 		return view('front.user.login', compact('data', 'pagina', 'leng'));
 	}
 
-	public function postSignin(Request $request) {
+	public function postSignin(Request $request, $leng = 'esp') {
 		$this->validate($request, [
 			'email' => 'email|required',
 			'password' => 'required|min:4'
@@ -62,27 +64,31 @@ class UserController extends Controller
 				Session::forget('oldUrl');
 			}
 
-			return redirect()->route('user.profile');
+			return redirect()->route('user.profile', ['leng' => $leng]);
 		}
 
 		return redirect()->back();
 	}
 
-	public function getProfile() {
+	public function getProfile($leng = 'esp') {
 		$data = Configuracion::first();
 		$orders = Auth::user()->orders;
+		$pagina = 'profile';
 
-		$orders->transform(function($order, $key) {
-			$order->cart = unserialize($order->cart);
-			return $order;
-		});
+		// $orders->transform(function($order, $key) {
+		// 	$order->cart = unserialize($order->cart);
+		// 	return $order;
+		// });
 
-		return view('front.user.perfil', compact('data', 'orders'));
+		return view('front.user.profile', compact('data', 'orders', 'pagina', 'leng'));
 	}
 
-	public function getLogout() {
+	public function getLogout($leng = 'esp') {
 		Auth::logout();
 		Session::forget('cart');
-		return redirect()->route('user.signin');
+		return redirect()->route('user.register', ['leng' => $leng]);
 	}
 }
+
+
+
