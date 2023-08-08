@@ -312,7 +312,7 @@
                                 </li>
                                 @endif
                                 <li class="col-4 text-start" style="list-style-type: none; padding-left: 0;">
-                                    <a href="{{ route('shoppingCart') }}" class="text-white">
+                                    <a href="{{ route('shoppingCart', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="text-white">
                                         <button type="button" class="btn btn-outline position-relative">
                                             <div uk-icon="icon: cart; ratio: 1;" class="text-white"></div>
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
@@ -432,7 +432,7 @@
 									<a href="{{ route('front.productos') }}" class="btn w-100 btn-outline px-5" style="border: 2px dashed #1E4A89; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Go back" : "Regresar" }}</small></a>
 								</div>
 								<div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-6 col-12 py-xxl-5 py-xl-5 py-lg-5 py-md-5 py-sm-5 py-xs-5 py-2">
-									<a href="#/" class="btn w-100 btn-outline px-4" style="border: 2px dashed #44B2E3; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Buy Product" : "Comprar Producto" }}</small></a>
+									<a href="{{ route('addToCart', ['id' => $producto->id, 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn w-100 btn-outline px-4" style="border: 2px dashed #44B2E3; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Buy Product" : "Comprar Producto" }}</small></a>
 								</div>
 							</div>
 							<div class="row py-xxl-0 py-xl-0 py-lg-0 py-md-0 py-sm-0 py-xs-0 py-3">

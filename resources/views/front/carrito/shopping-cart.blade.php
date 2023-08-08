@@ -1,9 +1,9 @@
 @extends('layouts.front')
 
-@section('cssExtras')
-@endsection
+@section('title', 'Carrito de compras')
 
 @section('styleExtras')
+
 @endsection
 
 @section('content')
@@ -100,9 +100,9 @@
                                     </a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'eng']) }}" style="text-decoration: none;">Profile</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'eng']) }}" style="text-decoration: none;">Logout</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Logout</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -116,9 +116,9 @@
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'esp']) }}" style="text-decoration: none;">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Perfil</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'esp']) }}" style="text-decoration: none;">Salir</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Salir</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -141,11 +141,11 @@
                             </ul>
                         </div>        
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('shoppingCart', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="es"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class=""></button> --}}
                         </div>
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('shoppingCart', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="en"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></button> --}}
                         </div>
                     </div>
@@ -154,84 +154,115 @@
 
 
 
-<div class="container-fluid mt-5 mb-5 py-5 bg-white">
-    @if (Session::has('success'))
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-            <div id="charge-message" class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
-        </div>
-    </div>
-    @endif
 
-    <div class="row">
-        <div class="col-12 fs-1 text-center">
-            @if ($leng == 'eng')
-                My Account
-            @else 
-                Mi perfil
-            @endif
-        </div>
-        <div class="col-12 fs-2">
-            @if ($leng == 'eng')
-                User data: 
-            @else
-                Datos de usuario:
-            @endif
-        </div>
-    </div>
-    <hr class="border-bottom border-dark border-4">
-    <div class="row">
-        <div class="col-md-9 mx-auto col-md-offset-4">
-            <h2 class="fs-1 text-center">
-                @if ($leng == 'eng')
-                    Shopping history
-                @else
-                    Historial de compras
-                @endif
-            </h2>
-
-            <div class="row">
-                @foreach ($orders as $order)
-                    <div class="row mt-5">
-                        <div class="col-8 fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Porduct' : 'Producto' }}
-                        </div>
-                        <div class="col-2 text-center fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Units' : 'Unidades' }}
-                        </div>
-                        <div class="col-2 fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Single Total' : 'Total Individual' }}
-                        </div>
-                    </div>
-                    <div class="row">
-                    @foreach ($order->cart->items as $item)
-                        <div class="col-8 fs-5 fw-normal border">
-                            {{ $item['item']['nombre'] }}
-                        </div>
-                        <div class="col-2 text-center fs-5 fw-normal border">
-                            {{ $item['qty'] }}
-                        </div>
-                        <div class="col-2 fs-5 fw-normal border">
-                            ${{ $item['price'] }}
-                        </div>
-                    @endforeach
-                </div>
-                    <div class="col-12 py-2 text-start fs-4 fw-bolder">
-                        {{ ($leng == 'eng') ? 'Total Paid' : 'Total Pagado' }}: ${{ $order->cart->totalPrice }}
-                        <p class="fs-5 fw-normal">{{ ($leng == 'eng') ? 'Purchase Date' : 'Fecha de la Compra' }}: {{ $order->created_at->format('d/m/Y') }}</p>
-                    </div>
-                @endforeach
-            </div>
-
-
-         
-            
-        </div>
+@if (Session::has('cart'))
+<div class="row mt-5 py-5 bg-white">
+    <div class="col fs-1 text-center">
+        @if ($leng == 'eng')
+            My shopping cart
+        @else
+            Mi carrrito de compras
+        @endif
     </div>
 </div>
+
+
+<div class="row bg-white">
+    <div class="col-sm-9 col-md-9 mx-auto col-md-offset-3 col-sm-offset-3">
+
+        <div class="row fs-5 fw-bolder border">
+            <div class="col-1 border">
+                {{ ($leng == 'eng') ? 'Amount' : 'Cantidad' }}
+            </div>
+            <div class="col-5 border">
+                {{ ($leng == 'eng') ? 'Product' : 'Producto' }}
+            </div>
+            <div class="col-3 border">
+                {{ ($leng == 'eng') ? 'Total by products' : 'Total por productos' }}
+            </div>
+            <div class="col-3 border">
+                {{ ($leng == 'eng') ? 'Actions' : 'Acciones' }}
+            </div>
+        </div>
+        <div class="row fs-5">
+            @foreach ($products as $product)
+                <div class="col-1 border">
+                    {{ $product['qty'] }}
+                </div>
+                <div class="col-5 border">
+                    {{ $product['item']['nombre'] }}
+                </div>
+                <div class="col-3 border">
+                    {{ $product['price'] }}
+                </div>
+                <div class="col-3 border">
+                    <a href="{{ route('reduceByOne', ['id' => $product['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn btn-small bg-dark fs-5 text-white">{{ ($leng == 'eng') ? 'Remove One' : 'Quitar uno' }}</a>
+                    <a href="{{ route('remove', ['id' => $product['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn btn-small bg-danger fs-5 text-white">{{ ($leng == 'eng') ? 'Remove All' : 'Quitar Totos' }}</a>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- <ul class="list-group">
+            @foreach ($products as $product)
+                <li class="list-group-item">
+                    <span class="badge bg-secondary text-white">{{ $product['qty'] }}</span>
+                    <strong>{{ $product['item']['nombre'] }}</strong>
+                    <span class="badge bg-success text-white">
+                        {{ $product['price'] }}
+                    </span>
+                    <div class="btn-group">
+                        <button type="button" class="button btn btn-primary btn-xs dropdown-toggle" data-bs-toggle="dropdown">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('product.reduceByOne', ['id' => $product['item']['id']]) }}" class="dropdown-item">Reduce by 1</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('product.remove', ['id' => $product['item']['id']]) }}" class="dropdown-item">Reduce All</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
+        </ul> --}}
+    </div>
+</div>
+
+
+<div class="row bg-white">
+    <div class="col-sm-9 col-md-9 mx-auto col-md-offset-3 col-sm-offset-3 fs-4">
+        <strong>
+            @if ($leng == 'eng')
+                Total of all products: {{ $totalPrice }}
+            @else
+                Total de todos los productos: {{ $totalPrice }}
+            @endif
+        </strong>
+    </div>
+</div>
+<div class="row bg-white mb-5 pb-5">
+    <div class="col-sm-9 col-md-9 mx-auto col-md-offset-3 col-sm-offset-3 text-center">
+        <a href="{{ route('checkoutStripe') }}" type="button" class="btn btn-success fs-5 fw-bolder" style="text-decoration: none;">
+            {{ ($leng == 'eng') ? 'Proceed with the payment' : 'Proceder con el pago' }}
+        </a>
+    </div>
+</div>
+@else
+<div class="row bg-white">
+    <div class="col-sm-12 mt-5 mb-5 py-5 col-md-12 col-md-offset-3 col-sm-offset-3 fs-5 text-center">
+        <h2>
+            @if ($leng == 'eng')
+                There are no products in the shopping cart
+            @else
+                No hay productos en el carrito de compras
+            @endif
+        </h2>
+    </div>
+</div>
+@endif
 @endsection
 
-@section('jsLibExtras2')
+@section('jqueryExtra')
+
 @endsection

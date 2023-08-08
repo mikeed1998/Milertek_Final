@@ -1,13 +1,12 @@
 @extends('layouts.front')
 
-@section('cssExtras')
-@endsection
+@section('title', 'Pagar (Stripe)')
 
 @section('styleExtras')
+
 @endsection
 
 @section('content')
-
 
 <div class="container-fluid" style="background-color: #1E4A89;">
 	<div class="row px-4">
@@ -100,9 +99,9 @@
                                     </a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'eng']) }}" style="text-decoration: none;">Profile</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'eng']) }}" style="text-decoration: none;">Logout</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Logout</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -116,9 +115,9 @@
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'esp']) }}" style="text-decoration: none;">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Perfil</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'esp']) }}" style="text-decoration: none;">Salir</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Salir</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -141,97 +140,88 @@
                             </ul>
                         </div>        
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('checkoutStripe', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="es"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class=""></button> --}}
                         </div>
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('checkoutStripe', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="en"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></button> --}}
                         </div>
                     </div>
                 </div>
             </div>
 
+<div class="row py-5 mt-5 mb-5">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 py-5 bg-white mx-auto col-sm-offset-3 rounded">
+        <h1>{{ ($leng == 'eng') ? 'Finalizing the purchase' : 'Finalizando la compra' }}</h1>
+        <h4>{{ ($leng == 'eng') ? 'Shopping cart total: $'.$total : 'Total de la compra: $'.$total }}</h4>
 
-
-<div class="container-fluid mt-5 mb-5 py-5 bg-white">
-    @if (Session::has('success'))
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-            <div id="charge-message" class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
+        <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'hidden' : '' }}">
+            {{ Session::get('error') }}
         </div>
-    </div>
-    @endif
-
-    <div class="row">
-        <div class="col-12 fs-1 text-center">
-            @if ($leng == 'eng')
-                My Account
-            @else 
-                Mi perfil
-            @endif
-        </div>
-        <div class="col-12 fs-2">
-            @if ($leng == 'eng')
-                User data: 
-            @else
-                Datos de usuario:
-            @endif
-        </div>
-    </div>
-    <hr class="border-bottom border-dark border-4">
-    <div class="row">
-        <div class="col-md-9 mx-auto col-md-offset-4">
-            <h2 class="fs-1 text-center">
-                @if ($leng == 'eng')
-                    Shopping history
-                @else
-                    Historial de compras
-                @endif
-            </h2>
-
+        <form action="{{ route('checkoutStripe') }}" method="POST" id="checkout-form">
+            @csrf
             <div class="row">
-                @foreach ($orders as $order)
-                    <div class="row mt-5">
-                        <div class="col-8 fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Porduct' : 'Producto' }}
-                        </div>
-                        <div class="col-2 text-center fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Units' : 'Unidades' }}
-                        </div>
-                        <div class="col-2 fs-5 fw-bolder border">
-                            {{ ($leng == 'eng') ? 'Single Total' : 'Total Individual' }}
-                        </div>
+                <div class="col-11 mx-auto">
+                    <div class="form-group">
+                        <label for="name">{{ ($leng == 'eng') ? 'Name' : 'Nombre' }}</label>
+                        <input type="text" id="name" class="form-control" name="name" required>
                     </div>
-                    <div class="row">
-                    @foreach ($order->cart->items as $item)
-                        <div class="col-8 fs-5 fw-normal border">
-                            {{ $item['item']['nombre'] }}
-                        </div>
-                        <div class="col-2 text-center fs-5 fw-normal border">
-                            {{ $item['qty'] }}
-                        </div>
-                        <div class="col-2 fs-5 fw-normal border">
-                            ${{ $item['price'] }}
-                        </div>
-                    @endforeach
                 </div>
-                    <div class="col-12 py-2 text-start fs-4 fw-bolder">
-                        {{ ($leng == 'eng') ? 'Total Paid' : 'Total Pagado' }}: ${{ $order->cart->totalPrice }}
-                        <p class="fs-5 fw-normal">{{ ($leng == 'eng') ? 'Purchase Date' : 'Fecha de la Compra' }}: {{ $order->created_at->format('d/m/Y') }}</p>
+                <div class="col-11 mx-auto">
+                    <div class="form-group">
+                        <label for="address">{{ ($leng == 'eng') ? 'Address' : 'Dirección' }}</label>
+                        <input type="text" id="address" class="form-control" name="address" required>
                     </div>
-                @endforeach
+                </div>
+                <div class="col-11 mx-auto">
+                    <div class="form-group">
+                        <label for="card-name">{{ ($leng == 'eng') ? 'Cardholder' : 'Titular de la tarjeta' }}</label>
+                        <input type="text" id="card-name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-11 mx-auto">
+                    <div class="form-group">
+                        <label for="card-number">{{ ($leng == 'eng') ? 'Card Number' : 'Número de tarjeta' }}</label>
+                        <input type="text" id="card-number" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-11 mx-auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="card-expiry-month">{{ ($leng == 'eng') ? 'Expiration month' : 'Mes de expiración' }}</label>
+                                <input type="text" id="card-expiry-month" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="card-expiry-year">{{ ($leng == 'eng') ? 'Year of expiration' : 'Año de expiración' }}</label>
+                                <input type="text" id="card-expiry-year" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-4 mx-auto">
+                            <div class="form-group">
+                                <label for="card-cvc">{{ ($leng == 'eng') ? 'CVC' : 'CVC' }}</label>
+                                <input type="text" id="card-cvc" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-
-
-         
-            
-        </div>
+            <div class="row">
+                <div class="col py-3 text-center">
+                    <button type="submit" class="btn btn-success">{{ ($leng == 'eng') ? 'Buy' : 'Comprar' }}</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
 
-@section('jsLibExtras2')
+@section('jqueryExtra')
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="{{ asset('js/checkoutStripe.js') }}"></script>
 @endsection

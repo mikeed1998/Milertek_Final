@@ -42,7 +42,7 @@ class UserController extends Controller
 			return redirect()->to($oldUrl);
 		}
 
-		return redirect()->route('user.profile', ['leng' => $leng]);
+		return redirect()->route('user.profile', ['leng' => $leng])->with('success', ($leng == 'eng') ? 'User account created successfully!' : '¡Cuenta de usuario creada exitosamente!');
 	}
 
 	public function getLogin($leng = 'esp') {
@@ -75,10 +75,10 @@ class UserController extends Controller
 		$orders = Auth::user()->orders;
 		$pagina = 'profile';
 
-		// $orders->transform(function($order, $key) {
-		// 	$order->cart = unserialize($order->cart);
-		// 	return $order;
-		// });
+		$orders->transform(function($order, $key) {
+			$order->cart = unserialize($order->cart);
+			return $order;
+		});
 
 		return view('front.user.profile', compact('data', 'orders', 'pagina', 'leng'));
 	}

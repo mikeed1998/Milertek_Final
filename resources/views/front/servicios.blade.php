@@ -390,7 +390,7 @@
 						</li>
 						@endif
 						<li class="col-4 text-start" style="list-style-type: none; padding-left: 0;">
-							<a href="{{ route('shoppingCart') }}" class="text-white">
+							<a href="{{ route('shoppingCart', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="text-white">
 								<button type="button" class="btn btn-outline position-relative">
 									<div uk-icon="icon: cart; ratio: 1;" class="text-white"></div>
 										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
