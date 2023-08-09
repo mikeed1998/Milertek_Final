@@ -140,6 +140,12 @@ Route::prefix('admin')->group(function(){
 			Route::post('/productoSide','SeccionController@productoSide')->name('productoSide');
 			Route::put('/productoUpdate/{producto}','SeccionController@productoUpdate')->name('productoUpdate');
 			Route::put('/imgProducto/{producto}','SeccionController@imgProducto')->name('imgProducto');
+			
+			Route::get('/galeriaSide/{producto}','SeccionController@galeriaSide')->name('galeriaSide');
+			Route::post('/addGaleriaSide','SeccionController@addGaleriaSide')->name('addGaleriaSide');
+			Route::delete('/delGaleriaSide/{galeria}','SeccionController@delGaleriaSide')->name('delGaleriaSide');
+			Route::post('/imgSiderGaleria','SeccionController@imgSiderGaleria')->name('imgSiderGaleria');
+
 			Route::delete('/delGaleria/{foto}','SeccionController@delGaleria')->name('delGaleria');
 			Route::delete('/delProducto/{producto}', 'SeccionController@delProducto')->name('delProducto');
 			Route::put('/caracteristicasSide/{producto}','SeccionController@caracteristicasSide')->name('caracteristicasSide');

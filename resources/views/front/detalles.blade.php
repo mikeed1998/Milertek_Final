@@ -419,6 +419,11 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-12 fs-5 fw-bolder">
+									${{ $producto->precio_mxn }}
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-xxl-11 col-xl-11 col-lg-11 col-md-12 col-sm-12 col-xs-12 col-12 fs-5 py-3" style="line-height: 1.1;">
 									@if ($leng == 'eng')
 										{{ $producto->descripcion_en }}

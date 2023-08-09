@@ -422,9 +422,9 @@
                                         <div class="row">
                                             <div class="col-7 fw-bolder" style="font-size: 14px;">
                                                 @if ($leng == 'eng')
-                                                    {{ $p->nombre_en }}
+                                                    {{ $p->nombre_en }} | ${{ $p->precio_mxn }}
                                                 @else
-                                                    {{ $p->nombre }}
+                                                    {{ $p->nombre }} | ${{ $p->precio_mxn }}
                                                 @endif
                                             </div>
                                             <div class="col-5 text-end">

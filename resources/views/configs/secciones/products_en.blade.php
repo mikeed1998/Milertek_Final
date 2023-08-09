@@ -645,83 +645,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-4 d-flex align-items-center">
-                                                                <button type="button" class="btn btn-link btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdropg{{ $pd->id }}">
+                                                                
+                                                                <a href="{{ route('config.seccion.galeriaSide', ['producto' => $pd->id]) }}" class="btn btn-link btn-block">
                                                                     <i class="fas fa-camera bg-info text-dark rounded fs-3 p-3"></i>
-                                                                </button>
-                                                                <div class="modal fade" id="staticBackdropg{{ $pd->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-lg">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Photo gallery</h1>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="row py-5">
-                                                                                    <div class="col">
-                                                                                        @if ($contGaleria != 0)
-                                                                                            <div class="row">
-                                                                                                <div class="galeriaslider" id="gal{{ $pd->id }}">
-                                                                                                    @foreach ($galeria_producto as $gapro)
-                                                                                                        @if ($gapro->producto == $pd->id)
-                                                                                                            <div class="col-6 position-relative text-center">
-                                                                                                                <div class="card border-0">
-                                                                                                                    <div style="
-                                                                                                                        background-image: url('{{ asset('img2/photos/productos/galeria/'.$gapro->foto) }}');
-                                                                                                                        background-size: contain;
-                                                                                                                        background-position: center center;
-                                                                                                                        background-repeat: no-repeat;
-                                                                                                                        height: 400px;
-                                                                                                                        width: 100%;
-                                                                                                                    "></div>
-                                                                                                                    {{-- <img src="{{ asset('img2/photos/productos/galeria/'.$gapro->foto) }}" alt="" class="img-fluid w-50"> --}}
-                                                                                                                    {{-- {{ $gapro->foto }} --}}
-                                                                                                                </div>
-                                                                                                                <div class="col-2 position-absolute top-0 end-0">
-                                                                                                                    <form action="{{ route('config.seccion.delGaleria', ['foto' => $gapro->id]) }}" method="POST" style="display: inline;">						
-                                                                                                                        @csrf
-                                                                                                                        @method('DELETE') 
-                                                                                                                        <button type="submit" class="btn btn-danger btn-block bg-danger rounded-pill"><i class="fas fa-trash"></i></button>
-                                                                                                                    </form>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        @else
-                                                                                            <h2>No images avaible</h2>
-                                                                                        @endif
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col">
-                                                                                        <form action="{{ route('config.seccion.productoUpdate', ['producto' => $pd->id]) }}" id="formug-{{ $pd->id }}" method="POST"  enctype="multipart/form-data">
-                                                                                            @csrf
-                                                                                            @method('PUT')
-                                                                                            <div class="row form-group py-3">
-                                                                                               
-                                                                                                <div class="col text-center">
-                                                                                                    <div class="file-select">
-                                                                                                        <input type="hidden" name="tipof" value="fotos">
-                                                                                                        <input type="file" name="imagen_g" aria-label="Archivo" accept="image/jpeg, image/png, image/gif" required>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="row form-group">
-                                                                                                <div class="col-6 mx-auto text-center">
-                                                                                                    <input type="submit" class="btn btn-outline border" value="Add photo to gallery">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
+
+                                                      
                                                             </div>
                                                             <div class="col-4 d-flex align-items-center">
                                                                 <form action="{{ route('config.seccion.delProducto', ['producto' => $pd->id]) }}" method="POST" style="display: inline;">						

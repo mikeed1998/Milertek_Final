@@ -282,6 +282,13 @@ class SeccionController extends Controller
         $imgDel = 'img2/photos/categorias/'.$categoria->icono;
         unlink($imgDel);
 
+        $productos = MProductos::all();
+        foreach($productos as $prod) {
+            if($prod->categoria == $categoria->id) {
+                $this->delProducto($prod);
+            }
+        }
+
         $categoria->delete();
 
         return redirect()->back();
@@ -428,12 +435,61 @@ class SeccionController extends Controller
     }
 
 
-    public function delGaleria(MGaleriaProducto $foto) {
-        $fotoGal = "img2/photos/productos/galeria/".$foto->foto;
+    public function galeriaSide(MProductos $producto) {
+        $galeria = MGaleriaProducto::all();
+
+        return view('configs.secciones.galeria', compact('producto', 'galeria'));
+    }
+
+
+    public function addGaleriaSide(Request $request) {
+        // dd($request);
+        $galeria = new MGaleriaProducto;
+
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $extension = $file->getClientOriginalExtension();
+            $namefile = Str::random(30).'.'.$extension;
+
+            \Storage::disk('local')->put("/img2/photos/productos/galeria/".$namefile , \File::get($file));
+
+            $galeria->producto = $request->producto;
+            $galeria->imagen = $namefile;
+        }
+
+        $galeria->save();
+
+        \Toastr::success('Guardado');
+		return redirect()->back();
+    }
+
+
+    public function delGaleriaSide(MGaleriaProducto $galeria) {
+        $fotoGal = "img2/photos/productos/galeria/".$galeria->foto;
         unlink($fotoGal);
 
-        $foto->delete();
+        $galeria->delete();
 
+        \Toastr::success('Guardado');
+        return redirect()->back();
+    }
+
+    public function imgSiderGaleria(Request $request) {
+        $galeria = new MGaleriaProducto;
+        // dd($request->archivo);
+        if ($request->hasFile('archivo')) {
+            $file = $request->file('archivo');
+            $extension = $file->getClientOriginalExtension();
+            $namefile = Str::random(30).'.'.$extension;
+
+            \Storage::disk('local')->put("/img2/photos/productos/galeria/".$namefile , \File::get($file));
+
+            $galeria->producto = $request->producto_padre;
+            $galeria->foto = $namefile;
+        }
+
+        $galeria->save();
+        
         \Toastr::success('Guardado');
         return redirect()->back();
     }
@@ -458,9 +514,10 @@ class SeccionController extends Controller
 
         foreach($galeria_aux as $ga) {
             if($ga->producto == $id_aux) {
-                $img_ga_aux = "img2/photos/productos/galeria".$ga->foto;
-                unlink($img_ga_aux);
-                $ga->delete();
+                $this->delGaleriaSide($ga);
+                // $img_ga_aux = "img2/photos/productos/galeria/".$ga->foto;
+                // unlink($img_ga_aux);
+                // $ga->delete();
             }
         }
 
