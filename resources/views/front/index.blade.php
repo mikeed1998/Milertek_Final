@@ -391,8 +391,8 @@
 @section('content')
 
 <div class="container-fluid" style="background-color: #1E4A89;">
-    <div class="row px-4">
-        <div class="col position-relative mx-auto mt-5">
+    <div class="row">
+        <div class="col px-5 position-relative mx-auto mt-5">
             <div class="row">
                 <div class="col">
                     <div class="row">           
@@ -524,7 +524,7 @@
                 </div>
                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-11 col-11 mx-xxl-0 mx-xl-0 mx-lg-0 mx-md-0 mx-sm-auto mx-xs-auto mx-auto py-xxl-3 py-xl-4 py-lg-4 py-md-0 py-sm-0 py-xs-0 px-xxl-0 px-xl-0 px-lg-0 px-md-0 px-sm-0 px-xs-3 px-3 bar2">
                     <div class="row fondo-bar-sm">
-                        <div class="col-xxl-5 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
+                        <div class="col-xxl-7 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
                             <ul class="row" style="list-style-type: none; padding-left: 0;">
                                 @if ($leng == 'eng')
                                 <li class="dropdown col-8 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
@@ -590,26 +590,28 @@
             </div>
         </div>
 
-<div class="container-fluid py-3" style="background-color: #3378C6;">
-    <div class="row px-3">
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 fs-2 fw-bolder text-white text-center">
-            {{-- {{ $elements[0]->texto }} --}}
-            {{-- <p class="m-0 text-center" id="texto-sectoresespeciaidad">{{ trans('sectoresespeciaidad') }}</p> --}}
-            @if($leng == 'eng') 
-                Speciality Sectors
-            @else 
-                Sectores de Especialidad
-            @endif
+        <div class="col-12 px-5">
+            <div class="row" style="background-color: #3378C6;">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 fs-2 fw-bolder text-white text-center">
+                    {{-- {{ $elements[0]->texto }} --}}
+                    {{-- <p class="m-0 text-center" id="texto-sectoresespeciaidad">{{ trans('sectoresespeciaidad') }}</p> --}}
+                    @if($leng == 'eng') 
+                        Speciality Sectors
+                    @else 
+                        Sectores de Especialidad
+                    @endif
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <span uk-icon="icon: arrow-down; ratio: 3;" style="color: #44B2E3;"></span>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
+            </div>
+        
         </div>
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
-            <span uk-icon="icon: arrow-down; ratio: 3;" style="color: #44B2E3;"></span>
-        </div>
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
-    </div>
-</div>
+    
 
-<div class="container-fluid mt-5 mb-5" style="background-color: #3378C6;">
-    <div class="row py-5" style="border-bottom: 2px dashed black;">
+        <div class="col-12 px-5">
+    <div class="row mt-5 py-5" style="border-bottom: 2px dashed black; background-color: #3378C6;">
         <div class="col-xxl-3 col-xl-3 col-lg-12 col-md-11 col-sm-11 col-xs-11 col-11 mx-auto">
             <div class="row">
                 <div class="col-xxl-1 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 "></div>
@@ -623,7 +625,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xxl-19 col-xl-12 col-lg-12 col-md-9 col-sm-11 col-xs-11 mx-auto py-4 text-center">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-9 col-sm-11 col-xs-11 mx-auto py-4 text-center">
                     
                     @if($leng == 'eng') 
                         <a href="{{ route('front.productos', ['leng' => 'eng']) }}">
@@ -682,7 +684,10 @@
             </div>
         </div>
     </div>
-    <div class="row py-5">
+    </div>
+
+    <div class="col-12 px-5">
+    <div class="row py-5" style="background-color: #3378C6;">
         <div class="col-10 mx-auto">
             <div class="row">
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12 mx-auto">
@@ -766,7 +771,10 @@
             </div>
         </div>
     </div>
-    <div class="row mt-5">
+</div>
+
+<div class="col-12 px-5">
+    <div class="row">
         <div class="col bg-white py-5">
             <div class="row">
                 <div class="col-11 px-4 py-5 mx-auto display-1" style="color: #1E4A89;">
@@ -864,6 +872,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="col-12 px-5">
     <div class="row">
         <div class="col banner" style="
             background-image: url('{{ asset('img/design/inicio/banner.png') }}');
@@ -958,6 +969,7 @@
         </div>
     </div>
 </div>
+<div class="col-12 px-5">
 
 @endsection
 

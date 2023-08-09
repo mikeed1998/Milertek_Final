@@ -149,8 +149,8 @@
 @section('content')
 
 <div class="container-fluid" style="background-color: #1E4A89;">
-	<div class="row px-4">
-		<div class="col position-relative mx-auto mt-5" >
+	<div class="row">
+		<div class="col-12 px-5 position-relative mx-auto mt-5" >
             <div class="row mb-5 py-3 px-xxl-0 px-xl-5 px-lg-3 px-md-0 px-sm-0 px-xs-0" style="background-color: #3378C6;">
                 <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-sm-12 col-xs-12 
                      text-center
@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-11 col-11 mx-xxl-0 mx-xl-0 mx-lg-0 mx-md-0 mx-sm-auto mx-xs-auto mx-auto py-xxl-3 py-xl-4 py-lg-4 py-md-0 py-sm-0 py-xs-0 px-xxl-0 px-xl-0 px-lg-0 px-md-0 px-sm-0 px-xs-3 px-3 bar2">
                     <div class="row fondo-bar-sm">
-                        <div class="col-xxl-5 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
+                        <div class="col-xxl-6 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
                             <ul class="row" style="list-style-type: none; padding-left: 0;">
                                 @if ($leng == 'eng')
                                 <li class="dropdown col-8 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
@@ -251,7 +251,7 @@
                                     @endif  
                                 </li>
                                 @else 
-                                <li class="dropdown col-8 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
+                                <li class="dropdown col-6 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -267,7 +267,7 @@
                                     @endif  
                                 </li>
                                 @endif
-                                <li class="col-4 text-start" style="list-style-type: none; padding-left: 0;">
+                                <li class="col-6 text-start" style="list-style-type: none; padding-left: 0;">
                                     <a href="{{ route('shoppingCart', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="text-white">
                                         <button type="button" class="btn btn-outline position-relative">
                                             <div uk-icon="icon: cart; ratio: 1;" class="text-white"></div>
@@ -290,9 +290,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-<div class="container-fluid">
-    
+    <div class="col-12 px-5 mx-auto">
     <div class="row px-xxl-5 px-xl-4 px-lg-1 px-md-1 px-sm-0 px-xs-1 px-1 py-4" style="background-color: #3378C6;">
     
         <div class="col-xxl-3 col-xl-3 col-lg-12 col-md-11 col-sm-11 col-xs-11 col-11 mx-auto mt-3">

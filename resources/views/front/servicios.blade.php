@@ -200,10 +200,10 @@
 
 @section('content')
 <div class="container-fluid" style="background-color: #1E4A89;">
-	<div class="row px-4">
+	<div class="row">
 		<div class="col position-relative mx-auto mt-5">
 			<div class="row">
-				<div class="col">
+				<div class="col-12 px-5">
 					<div class="row">
 						<div class="col px-0 position-relative">
 							<div class="slider_pri-img" style="
@@ -347,7 +347,7 @@
 					</div>
 					<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-11 col-11 mx-xxl-0 mx-xl-0 mx-lg-0 mx-md-0 mx-sm-auto mx-xs-auto mx-auto py-xxl-3 py-xl-4 py-lg-4 py-md-0 py-sm-0 py-xs-0 px-xxl-0 px-xl-0 px-lg-0 px-md-0 px-sm-0 px-xs-3 px-3 bar2">
 			<div class="row fondo-bar-sm">
-				<div class="col-xxl-5 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
+				<div class="col-xxl-7 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
 		
 					<ul class="row" style="list-style-type: none; padding-left: 0;">
 						@if ($leng == 'eng')
@@ -433,7 +433,7 @@
 		
   
 
-<div class="container-fluid py-0" >
+<div class="col-12 px-5" >
 	<div class="row px-3 mb-5" style="background-color: #3378C6;">
 		<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 fs-2 fw-bolder py-2 text-white text-center">
 			@if ($leng == 'eng')
@@ -521,6 +521,8 @@
 		
 	</div>
 </div>
+
+<div class="col-12 px-5">
 @endsection
 
 @section('jqueryExtra')

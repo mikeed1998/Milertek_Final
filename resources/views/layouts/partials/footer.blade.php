@@ -1,6 +1,6 @@
-<div class="container-fluid mt-5 ">
-    <div class="row px-0 bg-white">
-        <div class="col">
+
+    <div class="row mt-5 px-0 bg-white">
+        <div class="col mx-auto">
             <div class="row" style="border-bottom: 3px dashed black;">
                 <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12">
                     <div class="row">
@@ -102,14 +102,15 @@
                     <a href="" class="px-2 mt-4" uk-icon="icon: instagram; ratio: 1.6;" style="color: #44B2E3;"></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col py-2 text-center text-white" style="background-color: #1E4A89;">
-                    MILERTEK 2023 TODOS LOS DERECHOS RESERVADOS DISE&Ntilde;O DE WOZIAL
-                </div>
-            </div>
+            
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col py-2 text-center text-white" style="background-color: #1E4A89;">
+            MILERTEK 2023 TODOS LOS DERECHOS RESERVADOS DISE&Ntilde;O DE WOZIAL
+        </div>
+    </div>
+
 
 <script>
     document.querySelectorAll('.btn-idioma').forEach(button => {

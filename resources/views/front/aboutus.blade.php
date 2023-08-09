@@ -7,6 +7,10 @@
 	{{-- <link rel="stylesheet" href="{{asset('css/nosotros.css')}}"> --}}
 
 <style>
+    body {
+        background-color: #1E4A89;
+    }
+
     .dot {
         width: 10px;
         height: 10px;
@@ -263,8 +267,8 @@
 @section('content')
 
 <div class="container-fluid" style="background-color: #1E4A89;">
-	<div class="row px-4">
-		<div class="col position-relative mx-auto mt-5" >
+	<div class="row">
+		<div class="col-12 px-5 position-relative mx-auto mt-5" >
             <div class="row mb-5 py-3 px-xxl-0 px-xl-5 px-lg-3 px-md-0 px-sm-0 px-xs-0" style="background-color: #3378C6;">
                 <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-sm-12 col-xs-12 
                      text-center
@@ -340,7 +344,7 @@
                 </div>
                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-11 col-11 mx-xxl-0 mx-xl-0 mx-lg-0 mx-md-0 mx-sm-auto mx-xs-auto mx-auto py-xxl-3 py-xl-4 py-lg-4 py-md-0 py-sm-0 py-xs-0 px-xxl-0 px-xl-0 px-lg-0 px-md-0 px-sm-0 px-xs-3 px-3 bar2">
                     <div class="row fondo-bar-sm">
-                        <div class="col-xxl-5 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
+                        <div class="col-xxl-6 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
                             <ul class="row" style="list-style-type: none; padding-left: 0;">
                                 @if ($leng == 'eng')
                                 <li class="dropdown col-8 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
@@ -404,12 +408,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col bg-white py-5">
-            <div class="row">
-                <div class="col-11 py-5 mx-auto">
+
+            <div class="row px-5" style="background-color: #1E4A89;">
+                <div class="col-12 bg-white px-5 py-5 mx-auto">
                     <div class="row">
                         <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-9 col-sm-12 col-xs-12 col-12 fs-2 mx-auto fw-bolder py-5">
                             <div class="row">
@@ -449,17 +454,25 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col img-nosotros" style="
-                    background-image: url('{{ asset('img/design/inicio/banner.png') }}');
+     
+    <div class="row" style="background-color: #1E4A89;">
+
+        <div class="col-12 px-5" >
+            {{-- <div class="row">
+                <div class="col-12 px-5 img-nosotros" style="
+                    background-image: url('{{ asset('') }}');
                     background-size: contain;
                     background-position: center center;
                     background-repeat: no-repeat;
                     width: 100%;
                 "></div>
-            </div>
-            <div class="row">
-                <div class="col py-3 text-center display-3" style="color: #1E4A89;">
+            </div> --}}
+            <img src="{{ asset('img/design/inicio/banner.png') }}" alt="" class="img-fluid w-100">
+        </div>
+            
+        <div class="col-12 px-5" style="background-color: #1E4A89;"> 
+            <div class="row px-2">
+                <div class="col-12 px-5 bg-white py-3 text-center display-3" style="color: #1E4A89;">
                     @if ($leng == 'eng')
                         {{ $elements[36]->texto }}
                     @else
@@ -467,8 +480,8 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
+            <div class="row px-2">
+                <div class="col-12 px-5 bg-white">
                     <div class="tiempo">    
 
                         @if ($contFecha != 0)
@@ -550,100 +563,14 @@
                             <h1>No hay fechas en la linea del tiempo</h1>
                         @endif
 
-                    {{-- <div class="col mt-5 mb-5 py-4 position-relative border-1" style="margin-left: 30px;">
-                            <div class="col position-absolute top-50 start-50 translate-middle">
-                                <div class="dot"></div>
-                            </div>
-                            <div class="col-12 position-absolute top-50 start-100 translate-middle" style="border: 1px solid #4CB5E6;"></div>
-                                <div class="col-6 fs-5 fw-bolder text-center position-absolute top-0 start-50 translate-middle" style="color: #4CB5E6;">
-                                    2010
-                                </div>
-                                <div class="col-12 py-5 text-dark text-center position-absolute top-100 start-100 translate-middle cuadro-texto-primero">
-                                    <div class="row">
-                                        <div class="col-8 text-start" style="font-size: 13px; font-weight: bold; text-justify: inter-word;">
-                                            Born the first OEMS Electronics for Manufacturing Services
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mt-5 mb-5 py-4 position-relative border-1">
-                                <div class="col position-absolute top-50 start-50 translate-middle">
-                                    <div class="dot"></div>
-                                </div>
-                                <div class="col-12 position-absolute top-50 start-100 translate-middle" style="border: 1px solid #4CB5E6;"></div>
-                                    <div class="col-6 fs-5 fw-bolder text-center position-absolute top-0 start-50 translate-middle" style="color: #4CB5E6;">
-                                        2013
-                                    </div>
-                                    <div class="col-12 py-5 text-dark text-center position-absolute top-100 start-100 translate-middle cuadro-texto-medio">
-                                        <div class="row">
-                                            <div class="col-8 text-start" style="font-size: 13px; font-weight: bold; text-justify: inter-word;">
-                                                New facility start-up for Manufacturing Services (SMT+PTH)
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mt-5 mb-5 py-4 position-relative border-1">
-                                    <div class="col position-absolute top-50 start-50 translate-middle">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="col-12 position-absolute top-50 start-100 translate-middle" style="border: 1px solid #4CB5E6;"></div>
-                                    <div class="col-6 fs-5 fw-bolder text-center position-absolute top-0 start-50 translate-middle" style="color: #4CB5E6;">
-                                        2015
-                                    </div>
-                                    <div class="col-12 py-5 text-dark text-center position-absolute top-100 start-100 translate-middle cuadro-texto-medio">
-                                        <div class="row">
-                                            <div class="col-8 text-start" style="font-size: 13px; font-weight: bold; text-justify: inter-word;">
-                                                Team increased based in customer necessity for Product Design and Development, adding capacity
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mt-5 mb-5 py-4 position-relative border-1">
-                                    <div class="col position-absolute top-50 start-50 translate-middle">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="col-12 position-absolute top-50 start-100 translate-middle" style="border: 1px solid #4CB5E6;"></div>
-                                    <div class="col-6 fs-5 fw-bolder text-center position-absolute top-0 start-50 translate-middle" style="color: #4CB5E6;">
-                                        2021
-                                    </div>
-                                    <div class="col-12 py-5 text-dark text-center position-absolute top-100 start-100 translate-middle cuadro-texto-medio">
-                                        <div class="row">
-                                            <div class="col-8 text-start" style="font-size: 13px; font-weight: bold;">
-                                                Company rebranded to Milertek in a joint venture between OEMS Electronics and HENGI
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mt-5 mb-5 py-4 position-relative border-1">
-                                    <div class="col position-absolute top-50 start-50 translate-middle">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="col-12 position-absolute top-50 start-100 translate-middle"></div>
-                                    <div class="col-6 fs-5 fw-bolder text-center position-absolute top-0 start-50 translate-middle" style="color: #4CB5E6;">
-                                        2021
-                                    </div>
-                                    <div class="col-12 py-5 text-dark text-center position-absolute top-100 start-100 translate-middle cuadro-texto-medio">
-                                        <div class="row">
-                                            <div class="col-8 text-start" style="font-size: 13px; font-weight: bold;">
-                                                Company rebranded to Milertek in a joint venture between OEMS Electronics and HENGI
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                                
-                            </div>
-                        </div> --}}
+                   
                     </div>
                 </div>
             </div>
         </div>
- 
-<div class="container-fluid" style="background-color: #3378C6;">
-    <div class="row">
-        <div class="col py-5">
-            <div class="row">
+        
+        <div class="col-12 px-5" style="background-color: #1E4A89;">
+            <div class="row py-5" style="background-color: #3378C6;">
                 <div class="col-10 mx-auto">
                     <div class="row">
                         <div class="col-xxl-5 col-xl-5 col-lg-8 col-md-9 col-sm-12 col-xs-12 col-12 mx-auto mt-5 bg-white py-0">
@@ -743,12 +670,10 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid bg-white">
-    <div class="row">
-        <div class="col-11 mx-auto py-5">
-            <div class="row">
+ 
+
+        <div class="col-12 px-5 mx-auto" style="background-color: #1E4A89;">
+            <div class="row px-5 py-5 bg-white">
                 <div class="certificaciones">
 
                     @foreach ($certificaciones as $cer)
@@ -776,8 +701,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="col-12 mt-5 px-5"  style="background-color: #1E4A89;">
 
 @endsection
 

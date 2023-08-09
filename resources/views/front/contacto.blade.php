@@ -174,7 +174,7 @@
                 </div>
                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-11 col-11 mx-xxl-0 mx-xl-0 mx-lg-0 mx-md-0 mx-sm-auto mx-xs-auto mx-auto py-xxl-3 py-xl-4 py-lg-4 py-md-0 py-sm-0 py-xs-0 px-xxl-0 px-xl-0 px-lg-0 px-md-0 px-sm-0 px-xs-3 px-3 bar2">
                     <div class="row fondo-bar-sm">
-                        <div class="col-xxl-5 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
+                        <div class="col-xxl-6 col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
                             <ul class="row" style="list-style-type: none; padding-left: 0;">
                                 @if ($leng == 'eng')
                                 <li class="dropdown col-8 text-end mt-2" style="list-style-type: none; padding-left: 0;">        
@@ -239,7 +239,7 @@
                 </div>
             </div>
 
-<div class="container-fluid">
+
     <div class="row" style="background-color: #3378C6;"> 
         <div class="col display-3 text-white text-center py-3">
             @if ($leng == 'eng')
