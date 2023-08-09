@@ -18,7 +18,7 @@
 use Carbon\Carbon;
 
 Route::name('front.')->group(function(){
-
+	Route::get('/', 'FrontController@root')->name('root');
 	Route::get('/home/{leng?}', 'FrontController@index')->name('index');
 	Route::get('nosotros/{leng?}', 'FrontController@aboutus')->name('aboutus');
 	Route::get('productos/{leng?}', 'FrontController@productos')->name('productos');
@@ -37,7 +37,8 @@ Route::name('front.')->group(function(){
 		}
 		return back();
 	})->name('cambiarIdioma2');
-
+	Route::get('/admin', 'FrontController@admin')->name('admin');
+	Route::post('/adminp', 'FrontController@adminp')->name('adminp');
 });
 
 
@@ -61,7 +62,7 @@ Route::post('checkoutStripe/{leng?}', 'CarritoController@postCheckoutStripe')->n
 
 
 // rutas al admin
-Route::namespace("Admin")->prefix('admin')->group(function(){
+Route::namespace("Admin")->prefix('adnin')->group(function(){
 	Route::name('admin.')->group(function(){
 		Route::get('/', 'HomeController@index')->name('home');
 		Route::get('/nuevo', 'HomeController@create')->name('create');

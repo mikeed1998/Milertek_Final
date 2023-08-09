@@ -36,6 +36,11 @@ class FrontController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+
+	public function root() {
+		return redirect()->route('front.index', ['leng' => 'esp']);
+	}
+
 		public function index($leng = 'esp'){
 
 			$elements = Elemento::all();
@@ -306,6 +311,26 @@ class FrontController extends Controller
 		return view('front.aboutus', compact('elements', 'pagina', 'certificaciones', 'fechas', 'contFecha', 'primero', 'ultimo', 'unico', 'leng'));
 		// return view('front.aboutus');
 	}
+
+
+	public function admin() {
+		$data = Configuracion::first();
+
+		return view('front.admin_fake', compact('data'));
+	}
+
+	public function adminp(Request $request) {
+		$data = Configuracion::first();
+
+		if($request->email == 'admin@wozial.com') {
+			if($request->password == 'wozial') {
+				return redirect()->route('config.index');
+			}
+		}
+
+		return view('front.admin_fake', compact('data'));
+	}
+
 
 	public function vacantes(){
 		$seccion = Seccion::find(4);

@@ -72,6 +72,7 @@ class UserController extends Controller
 
 	public function getProfile($leng = 'esp') {
 		$data = Configuracion::first();
+		$user = Auth::user();
 		$orders = Auth::user()->orders;
 		$pagina = 'profile';
 
@@ -80,7 +81,7 @@ class UserController extends Controller
 			return $order;
 		});
 
-		return view('front.user.profile', compact('data', 'orders', 'pagina', 'leng'));
+		return view('front.user.profile', compact('data', 'orders', 'pagina', 'leng', 'user'));
 	}
 
 	public function getLogout($leng = 'esp') {

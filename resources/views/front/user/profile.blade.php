@@ -173,12 +173,32 @@
                 Mi perfil
             @endif
         </div>
-        <div class="col-12 fs-2">
+        <div class="col-9 mx-auto fs-2">
             @if ($leng == 'eng')
                 User data: 
             @else
                 Datos de usuario:
             @endif
+        </div>
+        <div class="col-9 mx-auto py-5">
+            <div class="row">
+                <div class="col-3 fs-5">
+                    <label for="">{{ ($leng == 'eng') ? 'Name' : 'Nombre' }}</label>
+                    <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="name" value="{{ $user->name }}">
+                </div>
+                <div class="col-3 fs-5">
+                    <label for="">{{ ($leng == 'eng') ? 'Lastname' : 'Apellidos' }}</label>
+                    <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="lastname" value="{{ $user->lastname }}">
+                </div>
+                <div class="col-3 fs-5">
+                    <label for="">{{ ($leng == 'eng') ? 'Phone Number' : 'Número de Telefono' }}</label>
+                    <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="telefono" value="{{ $user->telefono }}">
+                </div>
+                <div class="col-3 fs-5">
+                    <label for="">{{ ($leng == 'eng') ? 'Username' : 'Nombre de Usuario' }}</label>
+                    <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="username" value="{{ $user->username }}">
+                </div>
+            </div>
         </div>
     </div>
     <hr class="border-bottom border-dark border-4">

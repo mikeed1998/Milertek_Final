@@ -892,7 +892,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-9 col-sm-12 col-xs-12 mx-auto text-center" style="color: #44B2E3;">
-                    <textarea class="form-control text-start bg-transparent editarajax m-0" id="" rows="2" name="texto" data-id="{{ $elements[45]->id }}" data-table="Elemento" data-campo="texto" style="color: #44B2E3;">{{ $elements[45]->texto }}</textarea>  
+                    <textarea class="form-control text-start bg-transparent editarajax m-0" id="" rows="2" name="texto" data-id="{{ $elements[44]->id }}" data-table="Elemento" data-campo="texto" style="color: #44B2E3;">{{ $elements[44]->texto }}</textarea>  
                 </div>
             </div>
             <div class="row mb-5 mt-5">
