@@ -11,6 +11,15 @@
 		<div class="col-9">
 			<a href="{{ route('config.index') }}" class="col col-md-2 btn btn-sm grey darken-2 text-white mr-auto"><i class="fa fa-reply"></i> Regresar</a>
 		</div>
+		<div class="col-3 text-center">
+			<a href="/admin/config/secciones/about-us_en" class="col col-md-2  darken-2 text-white mr-auto"><img src="{{ asset('img/design/inicio/usa.png') }}" alt=""></a>
+			<a href="/admin/config/secciones/about-us" class="col col-md-2  darken-2 text-white mr-auto"><img src="{{ asset('img/design/inicio/mexico.png') }}" alt=""></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-12 col-md-6 text-center my-3">
@@ -22,19 +31,6 @@
 					<textarea name="descripcion" rows="10">{{$politicas[0]->descripcion}}</textarea>
 					<div class="form-group text-center">
 						<button type="submit" class="btn btn-primary">Guardar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[6]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[6]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[6]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
 				</form>
 			</div>
@@ -54,19 +50,6 @@
 		</div>
 		<div class="col-12 col-md-6 text-center my-3">
 			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[7]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[7]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[7]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
 				<form action="{{ route('config.politica.update',$politicas[2]->id) }}" method="post" class="card-body">
 					@csrf
 					@method('put')
@@ -74,19 +57,6 @@
 					<textarea name="descripcion" rows="10">{{$politicas[2]->descripcion}}</textarea>
 					<div class="form-group text-center">
 						<button type="submit" class="btn btn-primary">Guardar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[8]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[8]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[8]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
 				</form>
 			</div>
@@ -106,19 +76,6 @@
 		</div>
 		<div class="col-12 col-md-6 text-center my-3">
 			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[9]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[9]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[9]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
 				<form action="{{ route('config.politica.update',$politicas[4]->id) }}" method="post" class="card-body">
 					@csrf
 					@method('put')
@@ -126,45 +83,6 @@
 					<textarea name="descripcion" rows="10">{{$politicas[4]->descripcion}}</textarea>
 					<div class="form-group text-center">
 						<button type="submit" class="btn btn-primary">Guardar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[10]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[10]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[10]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[5]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[5]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[5]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-12 col-md-6 text-center my-3">
-			<div class="card">
-				<form action="{{ route('config.politica.update',$politicas[11]->id) }}" method="post" class="card-body">
-					@csrf
-					@method('put')
-					<label class="h5">{{$politicas[11]->titulo}}</label>
-					<textarea name="descripcion" rows="10">{{$politicas[11]->descripcion}}</textarea>
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
 				</form>
 			</div>

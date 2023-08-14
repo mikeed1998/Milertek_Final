@@ -25,8 +25,16 @@
 						<label for="answer">Respuesta</label>
 						<textarea name="answer" id="answer" rows="10" class="form-control" style="resize:none;">{{ $faq->respuesta }}</textarea>
 					</div>
+					<div class="form-group">
+						<label for="question2">Question</label>
+						<input type="text" name="question2" id="question2" class="form-control" value="{{$faq->question}}">
+					</div>
+					<div class="form-group">
+						<label for="answer2">Answer</label>
+						<textarea name="answer2" id="answer2" rows="10" class="form-control" style="resize:none;">{{ $faq->answer }}</textarea>
+					</div>
 					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="submit" class="btn btn-primary">Actualizar/Update</button>
 					</div>
 				</form>
 			</div>

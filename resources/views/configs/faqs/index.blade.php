@@ -18,7 +18,7 @@
 				<div class="card-header grey lighten-4 row" id="heading{{$f->id}}">
 					<h2 class="mb-0 w-75">
 						<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$f->id}}" aria-expanded="true" aria-controls="collapse{{$f->id}}">
-							{{ $f->pregunta}}
+							{{ $f->pregunta}} / {{ $f->question }}
 						</button>
 					</h2>
 					<div class="mb-0 w-25 text-right">
@@ -36,6 +36,8 @@
 				<div id="collapse{{$f->id}}" class="collapse" aria-labelledby="heading{{$f->id}}" data-parent="#acordionfaqs">
 					<div class="card-body text-justify">
 						{!! $f->respuesta!!}
+						<br>
+						{!! $f->answer !!}
 					</div>
 				</div>
 			</div>

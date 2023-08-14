@@ -17,15 +17,23 @@
 				<form action="{{ route('config.faq.store') }}" method="post">
 					@csrf
 					<div class="form-group">
-						<label for="question">Pregunta</label>
+						<label for="question">Pregunta [ES]</label>
 						<input type="text" name="question" id="question" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="answer">Respuesta</label>
+						<label for="answer">Respuesta [ES]</label>
 						<textarea name="answer" id="answer" rows="10" class="form-control" style="resize:none;"></textarea>
 					</div>
+					<div class="form-group">
+						<label for="question2">Question [EN]</label>
+						<input type="text" name="question2" id="question2" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="answer2">Answer [EN]</label>
+						<textarea name="answer2" id="answer2" rows="10" class="form-control" style="resize:none;"></textarea>
+					</div>
 					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="submit" class="btn btn-primary">Guardar/Save</button>
 					</div>
 				</form>
 			</div>

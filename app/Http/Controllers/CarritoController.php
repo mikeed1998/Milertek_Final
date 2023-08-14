@@ -133,7 +133,7 @@ class CarritoController extends Controller
     public function postCheckoutConekta(Request $request, $leng = 'esp') {
         // dd('llegue');
         if(!Session::has('cart')) {
-            return redirect()->route('shoppingCart');
+            return redirect()->route('shoppingCart', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']);
         }
 
         $oldCart = Session::get('cart');
@@ -184,7 +184,7 @@ class CarritoController extends Controller
 
         $token_id= $request->conektaTokenId;
 
-        
+        // dd($nombre_);
 
         try {
             $customer = \Conekta\Customer::create(

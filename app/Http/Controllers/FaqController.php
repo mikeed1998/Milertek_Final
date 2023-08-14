@@ -36,22 +36,32 @@ class FaqController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-			$validate = Validator::make($request->all(),[
-					'question' => 'required',
-					'answer' => 'required',
-				],[],[
-					'question' => 'pregunta',
-					'answer' => 'respuesta',
-				]);
+			// $validate = Validator::make($request->all(),[
+			// 		'question' => 'required',
+			// 		'answer' => 'required',
+			// 	],[],[
+			// 		'question' => 'pregunta',
+			// 		'answer' => 'respuesta',
+			// 	]);
+
+            $validate = Validator::make($request->all(),[
+                		'question' => 'required',
+                		'answer' => 'required',
+                        'question2' => 'required',
+                		'answer2' => 'required',  	
+            ]);
+    
 
 			if ($validate->fails()) {
-				\Toastr::error('Error, se requieren mas datos');
+				\Toastr::error('Error');
 				return redirect()->back();
 			}
 			$faq = new Faq;
 
 			$faq->pregunta = $request->question;
 			$faq->respuesta = $request->answer;
+            $faq->question = $request->question2;
+			$faq->answer = $request->answer2;
 
 			$faq->save();
 			\Toastr::success('Guardado');
@@ -95,26 +105,35 @@ class FaqController extends Controller
     public function update(Request $request, $id){
 			$faq = Faq::find($id);
 
-			$validate = Validator::make($request->all(),[
-					'question' => 'required',
-					'answer' => 'required',
-				],[],[
-					'question' => 'pregunta',
-					'answer' => 'respuesta',
-				]);
+			// $validate = Validator::make($request->all(),[
+			// 		'question' => 'required',
+			// 		'answer' => 'required',
+			// 	],[],[
+			// 		'question' => 'pregunta',
+			// 		'answer' => 'respuesta',
+			// 	]);
+
+            $validate = Validator::make($request->all(),[
+                'question' => 'required',
+                'answer' => 'required',
+                'question2' => 'required',
+                'answer2' => 'required',  	
+    ]);
 
 			if ($validate->fails()) {
-				\Toastr::error('Error, se requieren mas datos');
+				\Toastr::error('Error');
 				return redirect()->back();
 			}
 
 			if (empty($faq)) {
-				\Toastr::error('Error al buscar, intente mas tarde');
+				\Toastr::error('Error');
 				return redirect()->back();
 			}
 
 			$faq->pregunta = $request->question;
 			$faq->respuesta = $request->answer;
+            $faq->question = $request->question2;
+			$faq->answer = $request->answer2;
 
 			$faq->save();
 
