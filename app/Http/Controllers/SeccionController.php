@@ -262,17 +262,20 @@ class SeccionController extends Controller
     public function categoriaSlider(Request $request) {
         $slider = new MCategorias;
 
-        if ($request->hasFile('icono')) {
-            $file = $request->file('icono');
+        if ($request->hasFile('imagen_cate')) {
+            $file = $request->file('imagen_cate');
             $extension = $file->getClientOriginalExtension();
             $namefile = Str::random(30).'.'.$extension;
 
             \Storage::disk('local')->put("/img2/photos/categorias/".$namefile , \File::get($file));
 
             $slider->icono = $namefile;
+            $slider->categoria = $request->cate_esp;
+            $slider->categoria_en = $request->cate_eng;
         }
 
         $slider->save();
+        
         \Toastr::success('Guardado');
         return redirect()->back();
     }

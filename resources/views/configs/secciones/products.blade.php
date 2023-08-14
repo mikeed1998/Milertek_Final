@@ -272,12 +272,62 @@
         </div>
         <div class="col-xxl-9 col-xl-9 col-lg-12 col-md-11 col-sm-12 col-xs-12 col-12 mx-auto">
             <div class="row">
-                <div class="col-12 d-flex justify-content-center align-items-center flex-column mt-2 text-center">
+                {{-- <div class="col-12 d-flex justify-content-center align-items-center flex-column mt-2 text-center">
                     <form id="form_image_slider3" action="categoriaSlider" method="POST"  class="file-upload mt-2" style="" enctype="multipart/form-data">
                         @csrf
                         <input id="input_slider_img3" class="m-0 p-0" type="file" name="icono">
                         <label class="col-12 m-0 p-2 d-flex justify-content-center align-items-center" for="input_slider_img3" style="opacity: 100% !important; background-color: #1E4A89; border-radius: 26px;">Crear nueva categoría</label>
                     </form>
+                </div> --}}
+                <div class="com-6 text-center mx-auto">
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria" style="background-color: #1E4A89; color: white;">
+                        Agregar nueva categoría   
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel-categoria" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel-categoria">Nueva categoría</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('config.seccion.categoriaSlider') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <label for="imagen_cate" class="fs-5">Icono de la categoría</label>
+                                                <br>
+                                                <div class="file-select">
+                                                    <input type="file" name="imagen_cate" aria-label="Archivo" accept="image/jpeg, image/png, image/gif" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-6 mx-auto">
+                                                <label for="" class="fs-5">Nombre de la categoría [ES]</label>
+                                                <input type="text" class="form-control fs-5" name="cate_esp" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-6 mx-auto">
+                                                <label for="" class="fs-5">Category Name [EN]</label>
+                                                <input type="text" class="form-control fs-5" name="cate_eng" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <input type="submit" class="btn btn-outline btn-primary" value="Crear categoría">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <div class="row">

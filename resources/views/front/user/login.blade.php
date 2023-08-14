@@ -197,11 +197,11 @@
 
 							<p class="card-text text-center">
 								@if ($leng == 'eng')
-                                    <a href="{{ route('user.register', ['leng' => 'eng']) }}" class="btn btn-sm btn-primary px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
+                                    <a href="{{ route('user.register', ['leng' => 'eng']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
 						    			{{ __('Signup here') }}
 					    			</a>
                                 @else 
-                                    <a href="{{ route('user.register', ['leng' => 'esp']) }}" class="btn btn-sm btn-primary px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
+                                    <a href="{{ route('user.register', ['leng' => 'esp']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
 			    						{{ __('Regístrate aquí') }}
 		    						</a>
                                 @endif
