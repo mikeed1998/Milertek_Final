@@ -60,6 +60,9 @@ Route::get('/remove/{id}/{leng?}', 'CarritoController@getRemoveItem')->name('rem
 Route::get('checkoutStripe/{leng?}', 'CarritoController@getCheckoutStripe')->name('checkoutStripe')->middleware('auth');
 Route::post('checkoutStripe/{leng?}', 'CarritoController@postCheckoutStripe')->name('checkoutStripe')->middleware('auth');
 
+Route::get('getcheckoutConekta/{leng?}', 'CarritoController@getCheckoutConekta')->name('getcheckoutConekta')->middleware('auth');
+Route::post('postcheckoutConekta/{leng?}', 'CarritoController@postCheckoutConekta')->name('postcheckoutConekta')->middleware('auth');
+
 
 // rutas al admin
 Route::namespace("Admin")->prefix('adnin')->group(function(){

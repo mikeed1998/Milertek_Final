@@ -243,7 +243,7 @@
 </div>
 <div class="row bg-white mb-5 pb-5">
     <div class="col-sm-9 col-md-9 mx-auto col-md-offset-3 col-sm-offset-3 text-center">
-        <a href="{{ route('checkoutStripe') }}" type="button" class="btn btn-success fs-5 fw-bolder" style="text-decoration: none;">
+        <a href="{{ route('getcheckoutConekta', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" type="button" class="btn btn-success fs-5 fw-bolder" style="text-decoration: none;">
             {{ ($leng == 'eng') ? 'Proceed with the payment' : 'Proceder con el pago' }}
         </a>
     </div>

@@ -1,13 +1,12 @@
 @extends('layouts.front')
 
-@section('cssExtras')
-@endsection
+@section('title', 'Pagar (Conekta)')
 
 @section('styleExtras')
+
 @endsection
 
 @section('content')
-
 
 <div class="container-fluid" style="background-color: #1E4A89;">
 	<div class="row px-4">
@@ -100,9 +99,9 @@
                                     </a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'eng']) }}" style="text-decoration: none;">Profile</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'eng']) }}" style="text-decoration: none;">Logout</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Logout</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -116,9 +115,9 @@
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'esp']) }}" style="text-decoration: none;">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Perfil</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'esp']) }}" style="text-decoration: none;">Salir</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Salir</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -141,11 +140,11 @@
                             </ul>
                         </div>        
                         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('getcheckoutConekta', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="es"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class=""></button> --}}
                         </div>
                         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12  text-center py-1">
-                            <a class="text-white " href="{{ route('user.profile', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
+                            <a class="text-white " href="{{ route('getcheckoutConekta', ['leng' => 'eng']) }}"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="en"><img src="{{ asset('img/design/inicio/usa.png') }}" alt="" class="img-fluid"></button> --}}
                         </div>
                     </div>
@@ -153,149 +152,97 @@
             </div>
 
 
-
-<div class="container-fluid mt-5 mb-5 py-5 bg-white">
-    @if (Session::has('success'))
+<div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-            <div id="charge-message" class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
-        </div>
+        <div class="col text-center text-white display-5 fw-bolder py-3">{{ ($leng == 'eng') ? 'Checkout' : 'Finalizar compra' }}</div>
     </div>
-    @endif
-
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link fs-1 active" id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
-                {{ ($leng == 'eng') ? 'Personal Information' : 'Información Personal' }}
-            </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link fs-1" id="tab2-tab" data-bs-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
-                {{ ($leng == 'eng') ? 'My Purchase History' : 'Mi historial de compras' }}
-            </a>
-        </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-            <div class="row">
-                <div class="col-12 fs-1 text-center">
-                    @if ($leng == 'eng')
-                        My Account
-                    @else 
-                        Mi perfil
-                    @endif
-                </div>
-                <div class="col-9 mx-auto fs-2">
-                    @if ($leng == 'eng')
-                        User data: 
-                    @else
-                        Datos de usuario:
-                    @endif
-                </div>
-                <div class="col-9 mx-auto py-5">
-                    <div class="row">
-                        <div class="col-3 fs-5">
-                            <label for="">{{ ($leng == 'eng') ? 'Name' : 'Nombre' }}</label>
-                            <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="name" value="{{ $user->name }}">
-                        </div>
-                        <div class="col-3 fs-5">
-                            <label for="">{{ ($leng == 'eng') ? 'Lastname' : 'Apellidos' }}</label>
-                            <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="lastname" value="{{ $user->lastname }}">
-                        </div>
-                        <div class="col-3 fs-5">
-                            <label for="">{{ ($leng == 'eng') ? 'Phone Number' : 'Número de Telefono' }}</label>
-                            <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="telefono" value="{{ $user->telefono }}">
-                        </div>
-                        <div class="col-3 fs-5">
-                            <label for="">{{ ($leng == 'eng') ? 'Username' : 'Nombre de Usuario' }}</label>
-                            <input type="text" class="form-control editarajax"  data-id="{{ $user->id }}" data-table="User" data-campo="username" value="{{ $user->username }}">
-                        </div>
-                        <div class="col-6 py-2">
-                            <label for="">{{ ($leng == 'eng') ? 'Address' : 'Dirección' }}</label>
-                            <input type="text" class="form-control editarajax" data-id="{{ $user->id }}" data-table="User" data-campo="address" value="{{ $user->address }}">
-                        </div>
-                        <div class="col-3 py-2">
-                            <label for="">{{ ($leng == 'eng') ? 'Colonia' : 'Colonia' }}</label>
-                            <input type="text" class="form-control editarajax" data-id="{{ $user->id }}" data-table="User" data-campo="colonia" value="{{ $user->colonia }}">
-                        </div>
-                        <div class="col-3 py-2">
-                            <label for="">{{ ($leng == 'eng') ? 'Code' : 'Código Postal' }}</label>
-                            <input type="text" class="form-control editarajax" data-id="{{ $user->id }}" data-table="User" data-campo="codigo_postal" value="{{ $user->codigo_postal }}">
-                        </div>
-                        <div class="col-3">
-                            <label for="">{{ ($leng == 'eng') ? 'State' : 'Estado' }}</label>
-                            <input type="text" class="form-control editarajax" data-id="{{ $user->id }}" data-table="User" data-campo="estado" value="{{ $user->estado }}">
-                        </div>
-                        <div class="col-3">
-                            <label for="">{{ ($leng == 'eng') ? 'City/Town' : 'Municipio' }}</label>
-                            <input type="text" class="form-control editarajax" data-id="{{ $user->id }}" data-table="User" data-campo="municipio" value="{{ $user->municipio }}">
-                        </div>
+	<div class="row">
+        <div class="col-6 bg-white p-5 mx-auto" style="border: 2px solid black; border-radius: 16px;">
+            <form action="{{ route('postcheckoutConekta', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" method="POST" id="card-form">
+                @csrf
+        
+                <div class="form-group row">
+                    <div class="col-9">
+                        
+                        <img src="https://uploads-ssl.webflow.com/60ba7edb928ca1af6fd7612e/621e7b30da832e994d0200a7_Conekta_Imagotipo_Color-01.svg" alt="">
+                        
+                        <span class="card-errors"></span>
                     </div>
                 </div>
-            </div>
-            <hr class="border-bottom border-dark border-4">
-        </div>
-        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-            <div class="row">
-                <div class="col-md-9 mx-auto col-md-offset-4">
-                    <h2 class="fs-1 text-center">
-                        @if ($leng == 'eng')
-                            Shopping history
-                        @else
-                            Historial de compras
-                        @endif
-                    </h2>
-        
-                    <div class="row">
-                        @foreach ($orders as $order)
-                            <div class="row mt-5">
-                                <div class="col-8 fs-5 fw-bolder border">
-                                    {{ ($leng == 'eng') ? 'Porduct' : 'Producto' }}
-                                </div>
-                                <div class="col-2 text-center fs-5 fw-bolder border">
-                                    {{ ($leng == 'eng') ? 'Units' : 'Unidades' }}
-                                </div>
-                                <div class="col-2 fs-5 fw-bolder border">
-                                    {{ ($leng == 'eng') ? 'Single Total' : 'Total Individual' }}
-                                </div>
-                            </div>
-                            <div class="row">
-                            @foreach ($order->cart->items as $item)
-                                <div class="col-8 fs-5 fw-normal border">
-                                    {{ $item['item']['nombre'] }}
-                                </div>
-                                <div class="col-2 text-center fs-5 fw-normal border">
-                                    {{ $item['qty'] }}
-                                </div>
-                                <div class="col-2 fs-5 fw-normal border">
-                                    ${{ $item['price'] }}
-                                </div>
-                            @endforeach
-                        </div>
-                            <div class="col-12 py-2 text-start fs-4 fw-bolder">
-                                {{ ($leng == 'eng') ? 'Total Paid' : 'Total Pagado' }}: ${{ $order->cart->totalPrice }}
-                                <p class="fs-5 fw-normal">{{ ($leng == 'eng') ? 'Purchase Date' : 'Fecha de la Compra' }}: {{ $order->created_at->format('d/m/Y') }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-        
-                    
-                 
-                    
+                <div class="row">
+                    <div class="col fs-5 fw-bolder">{{ ($leng == 'eng') ? 'Total Purchase' : 'Total de la compra' }} ${{ $total }}</div>
                 </div>
-            </div>
-            <hr class="border-bottom border-dark border-4">
+                <div class="form-group row">
+                    <div class="mt-3 col">
+                        <label for="" class="fs-5">{{ ($leng == 'eng') ? 'Name' : 'Nombre' }}</label>
+                        <input class="form-control fs-5 border-0 border-bottom border-dark" size="20" data-conekta="card[name]" type="text" placeholder="{{ ($leng == 'eng') ? 'Cardholder Name' : 'Nombre del tarjetahambient' }}" style="box-shadow: none;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="mt-3 col">
+                        <label for="" class="fs-5">{{ ($leng == 'eng') ? 'Card Number' : 'Número de tarjeta' }}</label>
+                        <input class="form-control fs-5 border-0 border-bottom border-dark" size="20" data-conekta="card[number]" type="text" placeholder="{{ ($leng == 'eng') ? 'Credit Card Number    ' : 'Número de tarjeta de crédito' }}" style="box-shadow: none;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="mt-3 col-2">
+                        <label for="" class="fs-5">CVC</label>
+                        <input class="form-control fs-5 border-0 border-bottom border-dark" maxlength="4" data-conekta="card[cvc]" type="text" placeholder="CVC" style="box-shadow: none;">
+                    </div>
+                    <div class="mt-3 col-2">
+                        <label for="" class="fs-5">{{ ($leng == 'eng') ? 'Month' : 'Mes' }}</label>
+                        <input maxlength="2" data-conekta="card[exp_month]" type="text" class="form-control fs-5 border-0 border-bottom border-dark" placeholder="MM" style="box-shadow: none;">
+                    </div>
+                    <div class="mt-3 col-2">
+                        <label for="" class="fs-5">{{ ($leng == 'eng') ? 'Year' : 'Año' }}</label>
+                        <input  maxlength="4" data-conekta="card[exp_year]" type="text" class="form-control fs-5 border-0 border-bottom border-dark" placeholder="AAAA" style="box-shadow: none;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="mt-4 col-5 fs-5 text-center">
+                        <button class="btn w-100 btn-outline text-white fw-bolder fs-5" type="submit" style="background-color: #00AD61; box-shadow: none;">{{ ($leng == 'eng') ? 'Finish Payment' : 'Finalizar Pago' }}</button>
+                    </div>
+                </div>
+        
+                  
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+                
+            </form>
         </div>
     </div>
-
-    
-    
-    
 </div>
 @endsection
 
-@section('jsLibExtras2')
+@section('jqueryExtra')
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
+    <script type="text/javascript" >
+        // Conekta.setPublicKey('key_Cf6xwVgweFHiqVvzixk5VEQ');
+        Conekta.setPublicKey('key_Nd9OEqq52Cb3jDrzzGodG1Y');
+        
+      
+        var conektaSuccessResponseHandler = function(token) {
+          var $form = $("#card-form");
+          //Inserta el token_id en la forma para que se envíe al servidor
+           $form.append($('<input name="conektaTokenId" id="conektaTokenId" type="hidden">').val(token.id));
+          $form.get(0).submit(); //Hace submit
+        };
+        var conektaErrorResponseHandler = function(response) {
+          var $form = $("#card-form");
+          $form.find(".card-errors").text(response.message_to_purchaser);
+          $form.find("button").prop("disabled", false);
+        };
+      
+        //jQuery para que genere el token después de dar click en submit
+        $(function () {
+          $("#card-form").submit(function(event) {
+            var $form = $(this);
+            // Previene hacer submit más de una vez
+            $form.find("button").prop("disabled", true);
+            Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+            return false;
+          });
+        });
+      </script>
 @endsection
