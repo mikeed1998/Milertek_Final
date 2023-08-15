@@ -9,6 +9,8 @@ use App\MCategorias;
 use App\MCertificacion;
 use App\MClientes;
 use App\MFecha;
+use App\MOrder;
+use App\User;
 use App\MGaleriaProducto;
 use App\MProductos;
 use App\MServicios;
@@ -79,6 +81,8 @@ class SeccionController extends Controller
         $servicios = MServicios::all();
         $slider_principal = MSliderPrincipal::all();
         $data = Configuracion::first();
+        $ordenes = MOrder::all();
+        $usuarios = User::all();
 
         $ruta = 'configs.secciones.'.$seccion;
 
@@ -127,7 +131,7 @@ class SeccionController extends Controller
             $contGaleria++;
         }
 
-		return view($ruta, compact('elements', 'caracteristicas_producto', 'categorias', 'certificaciones', 'clientes', 'fechas', 'galeria_producto', 'productos', 'servicios', 'slider_principal', 'conts', 'clientesCont', 'categoriasCont', 'contServ', 'contCertificaciones', 'contFechas', 'contProductos', 'contGaleria', 'productosCont', 'data'));
+		return view($ruta, compact('elements', 'caracteristicas_producto', 'categorias', 'certificaciones', 'clientes', 'fechas', 'galeria_producto', 'productos', 'servicios', 'slider_principal', 'conts', 'clientesCont', 'categoriasCont', 'contServ', 'contCertificaciones', 'contFechas', 'contProductos', 'contGaleria', 'productosCont', 'data', 'ordenes', 'usuarios'));
     }
 
 
@@ -685,6 +689,33 @@ class SeccionController extends Controller
         return redirect()->back();
     }
 
+    
+
+    public function usersList() {
+        $ordenes = MOrder::all();
+
+        return view('configs.secciones.carts', compact('ordenes'));
+    }
+
+    public function usuario_detalle($usuario) {
+        $usuario = User::find($usuario);
+
+        return view('configs.secciones.usuarios', compact('usuario'));
+    }
+
+    public function lista_usuarios($leng = 'esp') {
+        $usuarios = User::all();
+
+        return view('configs.secciones.users', compact('usuarios'));
+    }
+
+    public function checkUpdate(Request $request, $order)
+    {
+        $order = MOrder::find($order);
+        $order->entregado = $request->estado;
+        $order->update();
+        return redirect()->route('config.seccion.usersList');
+    }
 
     /**
      * Remove the specified resource from storage.

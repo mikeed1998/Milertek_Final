@@ -154,6 +154,13 @@ Route::prefix('admin')->group(function(){
 			Route::put('/caracteristicasSide/{producto}','SeccionController@caracteristicasSide')->name('caracteristicasSide');
 			Route::delete('/delCaracteristica/{caracteristica}', 'SeccionController@delCaracteristica')->name('delCaracteristica');
 
+
+			Route::get('/usersList','SeccionController@usersList')->name('usersList');
+			Route::get('/usuario_detalle/{usuario}','SeccionController@usuario_detalle')->name('usuario_detalle');
+			Route::get('/lista_usuarios','SeccionController@lista_usuarios')->name('lista_usuarios');
+			Route::put('/check/{order}', 'SeccionController@checkUpdate')->name('check');
+
+
 			Route::post('/servicioSide','SeccionController@servicioSide')->name('servicioSide');
 			Route::put('/imgServicio/{servicio}','SeccionController@imgServicio')->name('imgServicio');
 			Route::delete('/delServicio/{servicio}', 'SeccionController@delServicio')->name('delServicio');

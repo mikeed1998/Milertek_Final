@@ -55,15 +55,18 @@
 						<a href="{{ route('vacante.index') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/vacantes')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="w-fa fas fa-search"></i>Vacantes</a>
 					</li> --}}
 					<li>
-						<a href="{{ route('config.general') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/general')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-bookmark"></i> Nombre de la página </a>
+						<a href="{{ route('config.general') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/general')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-bookmark"></i> General </a>
 					</li>
 					<li>
 						<a href="{{ route('config.faq.index') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/faq')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-question"></i> FAQ </a>
 					</li>
 					<li>
-						<a href="{{ route('config.politica.index') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/politicas')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-shield-alt"></i> Políticas </a>
+						<a href="{{ route('config.politica.index') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/politicas')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-shield-alt"></i> Políticas - Politics </a>
 					</li>
 					<li>
+						<a href="{{ route('config.seccion.index') }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/secciones')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-shield-alt"></i> Secciones - Seccions </a>
+					</li>
+					{{-- <li>
 						<a href="{{ route('config.seccion.show', ['slug' => 'home']) }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/secciones/home')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-home"></i> Inicio (ES) </a>
 					</li>
 					<li>
@@ -92,7 +95,8 @@
 					</li> 
 					<li>
 						<a href="{{ route('config.seccion.show', ['slug' => 'contact_en']) }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config/secciones/contact_en')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-mail-bulk"></i> Contact (EN) </a>
-					</li> 
+					</li>  --}}
+					
 					{{-- <li>
 						<a href="{{ route('config.seccion.show', ['slug' => 'contact']) }}" class="mx-3 my-1 collapsible-header waves-effect {{ (request()->is('admin/config*')) ? 'active' : '' }}" style="border-radius: 16px;"><i class="fas fa-paper-plane"></i> Contacto </a>
 					</li> --}}

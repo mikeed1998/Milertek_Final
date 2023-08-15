@@ -15,6 +15,9 @@
 	<div class="row justify-content-center">
 		@foreach ($seccion as $card)
 			@if (!empty($card->elements))
+				@if ($card->slug != 'home_en' && $card->slug != 'services_en' && $card->slug != 'products_en' && $card->slug != 'about-us_en' && $card->slug != 'contact_en')
+					
+				
 				<div class="col-6 col-lg-2 p-2">
 					<a href="{{route('config.seccion.show',$card->slug)}}"  class="card h-100">
 						<span class="card-body text-muted text-center">
@@ -23,6 +26,7 @@
 						</span>
 					</a>
 				</div>
+				@endif
 			@endif
 		@endforeach
 	</div>
