@@ -62,7 +62,8 @@ Route::post('checkoutStripe/{leng?}', 'CarritoController@postCheckoutStripe')->n
 
 Route::get('getcheckoutConekta/{leng?}', 'CarritoController@getCheckoutConekta')->name('getcheckoutConekta')->middleware('auth');
 Route::post('postcheckoutConekta/{leng?}', 'CarritoController@postCheckoutConekta')->name('postcheckoutConekta')->middleware('auth');
-
+Route::get('paysuccess/{leng?}', 'CarritoController@paySuccess')->name('paysuccess')->middleware('auth');
+Route::get('payerror/{msg?}/{leng?}', 'CarritoController@payError')->name('payerror')->middleware('auth');
 
 // rutas al admin
 Route::namespace("Admin")->prefix('adnin')->group(function(){

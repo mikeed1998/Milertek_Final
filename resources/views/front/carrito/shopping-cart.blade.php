@@ -90,7 +90,16 @@
                         <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center py-1">
                             <ul class="row" style="list-style-type: none; padding-left: 0;">
                                 @if ($leng == 'eng')
-                                <li class="dropdown col-lg-8 col-md-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center mt-2" style="list-style-type: none; padding-left: 0;">        
+                                <li class="dropdown col-lg-8 col-md-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center  mt-2" style="list-style-type: none; padding-left: 0;">        
+                                    @if (Auth::check())
+                                    <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
+                                        @if (Auth::user()->username != '')
+											{{ Auth::user()->username}}
+										@else
+											{{ Auth::user()->name}}
+										@endif
+                                    </a>
+                                    @else
                                     <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
                                         @if ($leng == 'eng')
                                             Account
@@ -98,11 +107,12 @@
                                             Cuenta
                                         @endif
                                     </a>
+                                    @endif
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Profile</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'eng']) }}" style="text-decoration: none;">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Logout</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'eng']) }}" style="text-decoration: none;">Logout</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -112,13 +122,30 @@
                                     @endif  
                                 </li>
                                 @else 
-                                <li class="dropdown col-lg-8 col-md-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center mt-2" style="list-style-type: none; padding-left: 0;">        
-                                    <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a>
+                                <li class="dropdown col-lg-8 col-md-12 text-xxl-end text-xl-end text-lg-end text-md-center text-sm-center text-xs-center text-center  mt-2" style="list-style-type: none; padding-left: 0;">        
+                                    {{-- <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">Cuenta</a> --}}
+                                    @if (Auth::check())
+                                    <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
+                                        @if (Auth::user()->username != '')
+											{{ Auth::user()->username}}
+										@else
+											{{ Auth::user()->name}}
+										@endif
+                                    </a>
+                                    @else
+                                    <a href="#" class="dropdown-toggle text-white fw-normal" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
+                                        @if ($leng == 'eng')
+                                            Account
+                                        @else
+                                            Cuenta
+                                        @endif
+                                    </a>
+                                    @endif
                                     @if (Auth::check())
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
-                                            <li class="dropdown-item"><a href="{{ route('user.profile') }}" style="text-decoration: none;">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.profile', ['leng' => 'esp']) }}" style="text-decoration: none;">Perfil</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li class="dropdown-item"><a href="{{ route('user.logout') }}" style="text-decoration: none;">Salir</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('user.logout', ['leng' => 'esp']) }}" style="text-decoration: none;">Salir</a></li>
                                         </ul>
                                     @else
                                         <ul class="dropdown-menu" style="list-style-type: none; padding-left: 0;">
@@ -128,8 +155,8 @@
                                     @endif  
                                 </li>
                                 @endif
-                                <li class="col-lg-4 col-md-12 text-xxl-start text-xl-start text-lg-start text-md-center text-sm-center text-xs-center text-center mt-xxl-0 mt-xl-0 mt-lg-0 mt-md-2 mt-sm-2 mt-xs-2 mt-2" style="list-style-type: none; padding-left: 0;">
-                                    <a href="{{ route('shoppingCart') }}" class="text-white">
+                                <li class="col-lg-4 col-md-12 text-xxl-start text-xl-start text-lg-start text-md-center text-sm-center text-xs-center text-center  mt-xxl-0 mt-xl-0 mt-lg-0 mt-md-2 mt-sm-2 mt-xs-2 mt-2" style="list-style-type: none; padding-left: 0;">
+                                    <a href="{{ route('shoppingCart', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="text-white">
                                         <button type="button" class="btn btn-outline position-relative">
                                             <div uk-icon="icon: cart; ratio: 1;" class="text-white"></div>
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
@@ -139,7 +166,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>        
+                        </div>         
                         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12  text-center py-1">
                             <a class="text-white " href="{{ route('shoppingCart', ['leng' => 'esp']) }}"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class="img-fluid"></a>
                             {{-- <button class="btn-idioma boton-imagen btn" data-idioma="es"><img src="{{ asset('img/design/inicio/mx.png') }}" alt="" class=""></button> --}}
@@ -156,7 +183,7 @@
 
 
 @if (Session::has('cart'))
-<div class="row mt-5 py-5 bg-white">
+{{-- <div class="row mt-5 py-5 bg-white">
     <div class="col fs-1 text-center">
         @if ($leng == 'eng')
             My shopping cart
@@ -164,8 +191,94 @@
             Mi carrrito de compras
         @endif
     </div>
+</div> --}}
+
+
+
+
+<div class="row bg-white">
+    <section class="py-5" style="background-color: rgba(51, 120, 198, 0.22);">
+        <div class="container py-0">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-10">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-normal mb-0 fs-1 text-black">@if ($leng == 'eng')
+                            My shopping cart
+                        @else
+                            Mi carrrito de compras
+                        @endif</h3>
+                    <div>
+                </div>
+            </div>
+            @foreach ($products as $prod)
+                <div class="card mb-3" style="background-color: rgba(51, 120, 198, .7); border-radius: 36px;">
+                    <div class="card-body m-0">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img src="{{ asset('img2/photos/productos/galeria/'.$prod['item']['foto_principal']) }}" class="img-fluid rounded-3">
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-xl-4">
+                                <p class="lead fw-bolder mb-2 text-white">
+                                    {{ ($leng == 'eng') ? $prod['item']['nombre_en'] : $prod['item']['nombre'] }}
+                                </p>
+                                <p class="text-white">
+                                    {{ ($leng == 'eng') ? 'Amount: ' : 'Cantidad: ' }} {{ $prod['qty'] }}
+                                </p>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 offset-lg-1">
+                                <h5 class="mb-0 text-white fw-bold">${{ $prod['price'] }}</h5>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
+                                <div class="row">
+                                    <div class="col-12 py-1">
+                                        <a href="{{ route('reduceByOne', ['id' => $prod['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn w-100 btn-sm btn-small bg-dark text-white" style="border-radius: 16px;">{{ ($leng == 'eng') ? 'Remove One' : 'Quitar uno' }}</a>
+                                    </div>
+                                    <div class="col-12 py-1">
+                                        <a href="{{ route('remove', ['id' => $prod['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn w-100 btn-sm btn-small bg-danger text-white" style="border-radius: 16px;">{{ ($leng == 'eng') ? 'Remove All' : 'Quitar Totos' }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <div class="card mt-1 mb-1" style="background-color: rgba(51, 120, 198, .7); border-radius: 36px;">
+                <div class="card-body text-white">
+                    <strong>
+                        @if ($leng == 'eng')
+                Total of all products: {{ $totalPrice }}
+            @else
+                Total de todos los productos: {{ $totalPrice }}
+            @endif
+                    </strong>
+                </div>
+            </div>
+            <div class="card bg-transparent border-0 mt-3">
+                <div class="card-body">
+                    <a href="{{ route('getcheckoutConekta', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" type="button" class="btn btn-md fs-5 fw-bolder text-white fw-bolder" style="background-color: #1E4A89; text-decoration: none; border-radius: 16px;">
+                        {{ ($leng == 'eng') ? 'Proceed with the payment' : 'Proceder con el pago' }}
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+{{--  
 
 <div class="row bg-white">
     <div class="col-sm-9 col-md-9 mx-auto col-md-offset-3 col-sm-offset-3">
@@ -202,30 +315,7 @@
             @endforeach
         </div>
 
-        {{-- <ul class="list-group">
-            @foreach ($products as $product)
-                <li class="list-group-item">
-                    <span class="badge bg-secondary text-white">{{ $product['qty'] }}</span>
-                    <strong>{{ $product['item']['nombre'] }}</strong>
-                    <span class="badge bg-success text-white">
-                        {{ $product['price'] }}
-                    </span>
-                    <div class="btn-group">
-                        <button type="button" class="button btn btn-primary btn-xs dropdown-toggle" data-bs-toggle="dropdown">
-                            Action <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('product.reduceByOne', ['id' => $product['item']['id']]) }}" class="dropdown-item">Reduce by 1</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('product.remove', ['id' => $product['item']['id']]) }}" class="dropdown-item">Reduce All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            @endforeach
-        </ul> --}}
+      
     </div>
 </div>
 
@@ -247,7 +337,7 @@
             {{ ($leng == 'eng') ? 'Proceed with the payment' : 'Proceder con el pago' }}
         </a>
     </div>
-</div>
+</div> --}}
 @else
 <div class="row bg-white">
     <div class="col-sm-12 mt-5 mb-5 py-5 col-md-12 col-md-offset-3 col-sm-offset-3 fs-5 text-center">

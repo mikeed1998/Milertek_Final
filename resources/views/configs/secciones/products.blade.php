@@ -528,9 +528,9 @@
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="row form-group">
-                                                                <div class="col text-center rounded fs-5 bg-info">
+                                                                <div class="col text-center rounded fs-5">
                                                                     <input type="file" name="foott" class="btn btn-info form-control" value="Actualizar Imagen" required>
-                                                                    <input type="submit" class="btn btn-block border border-white" value="Cambiar foto">
+                                                                    <input type="submit" class="btn btn-block border border-white bg-info" value="Cambiar foto">
                                                                 </div>
                                                             </div>
                                                         </form>

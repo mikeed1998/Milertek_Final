@@ -201,12 +201,16 @@ class CarritoController extends Controller
                 )//customer
             );
         } catch (\Conekta\ProccessingError $error){
-            echo $error->getMesage();
+            return redirect()->route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
+            // echo $error->getMesage();
         } catch (\Conekta\ParameterValidationError $error){
-            echo $error->getMessage();
+            // echo $error->getMessage();
+            return redirect()->route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
         } catch (\Conekta\Handler $error){
-             echo $error->getMessage();
+            //  echo $error->getMessage();
+            return redirect()->route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
         }
+
 
         $lineItems = [];
 
@@ -263,11 +267,14 @@ class CarritoController extends Controller
 
             Auth::user()->orders()->save($order);
         } catch (\Conekta\ProcessingError $error){
-            echo $error->getMessage();
+            // echo $error->getMessage();
+            return route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
         } catch (\Conekta\ParameterValidationError $error){
-            echo $error->getMessage();
+            // echo $error->getMessage();
+            return route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
         } catch (\Conekta\Handler $error){
-            echo $error->getMessage();
+            // echo $error->getMessage();
+            return route('payerror', ['msg' => $error->getMessage(), 'leng' => $leng]);
         }
 
         // echo "ID: ". $order->id;
@@ -298,6 +305,15 @@ class CarritoController extends Controller
 
         
         Session::forget('cart');
-        return redirect()->route('user.profile', ['leng' => $leng])->with('success', ($leng == 'eng') ? 'Successfully purchased products!' : 'Pago exitoso');
+        // return redirect()->route('user.profile', ['leng' => $leng])->with('success', ($leng == 'eng') ? 'Successfully purchased products!' : 'Pago exitoso');
+        return redirect()->route('paysuccess', ['leng' => $leng]);
+    }
+
+    public function paySuccess($leng = 'esp') {
+        return view('front.carrito.paysuccess', compact('leng'));
+    }
+
+    public function payError($msg = '', $leng = 'esp') {
+        return view('front.carrito.payerror', compact('msg', 'leng'));
     }
 }
