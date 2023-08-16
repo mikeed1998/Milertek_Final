@@ -90,7 +90,11 @@
                                                 <li class="col-11 list-group-item border-0">
                                                     <div class="row">
                                                         <div class="col-6 fs-5">
-                                                            User: {{ $order->name }} <a href="{{ route('config.seccion.usuario_detalle', ['usuario' => $order->user_id]) }}" class="btn btn-outline border"><i class="fa fa-user"></i></a>
+                                                            @php
+                                                                $link = '/admin/config/secciones/usuario_detalle/'.$order->id.'?leng=eng';
+                                                            @endphp
+                                                            {{-- User: {{ $order->name }} <a href="{{ route('config.seccion.usuario_detalle', ['usuario' => $order->user_id]) }}" class="btn btn-outline border"><i class="fa fa-user"></i></a> --}}
+                                                            User: {{ $order->name }} <a href="{{ $link }}" class="btn btn-outline border"><i class="fa fa-user"></i></a>
                                                        
                                                         </div>
                                                         <div class="col-4 fs-5">
