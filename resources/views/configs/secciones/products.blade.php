@@ -342,12 +342,15 @@
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-3 col-xs-2 col-4 text-center py-3 circulo-productos">
-                                                    <img src="{{ asset('img2/photos/categorias/'.$categoria->icono) }}" alt="" class="img-fluid mx-auto gran" style="width: 40px; height: 40px;">
+                                                    <img src="{{ asset('img2/photos/categorias/'.$categoria->icono) }}" alt="" class="img-fluid mx-auto gran" style="width: 30px; height: 30px;">
                                                 </div>
-                                                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-9 col-xs-9 col-8 p-4 text-white">
+                                                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-9 col-xs-9 col-8 p-4 text-white position-relative">
                                                     <strong class="texto-productos">
-                                                        <textarea class="form-control text-white bg-transparent text-start editarajax m-0" id="" rows="1" name="texto" data-id="{{ $categoria->id }}" data-table="MCategorias" data-campo="categoria" style="line-height: 1.1;">{{ $categoria->categoria }}</textarea>   
+                                                        <textarea class="form-control text-white bg-transparent text-start editarajax m-0" id="" rows="2" name="texto" data-id="{{ $categoria->id }}" data-table="MCategorias" data-campo="categoria" style="line-height: 1.1; font-size: 14px;">{{ $categoria->categoria }}</textarea>   
                                                     </strong>
+                                                    <div class="col-4  position-absolute top-0 start-0">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                             
@@ -455,9 +458,9 @@
                                         <div class="col-9 text-center mx-auto">
                                             <div id="inputsContainer">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="caracteristicas[]" class="caracteristica form-control" required>
+                                                    <input type="text" name="caracteristicas[]" class="caracteristica form-control" placeholder="Español" required>
                                                
-                                                    <input type="text" name="caracteristicas3[]" class="caracteristica3 form-control" required>
+                                                    <input type="text" name="caracteristicas3[]" class="caracteristica3 form-control" placeholder="Inglés" required>
                                                 </div>
                                             </div>
                                             

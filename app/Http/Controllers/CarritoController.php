@@ -127,7 +127,9 @@ class CarritoController extends Controller
         $cart = new Carrito($oldCart);
         $total = $cart->totalPrice;
 
-        return view('front.carrito.checkoutConekta', ['total' => $total, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng]);
+        $user = Auth::user();
+
+        return view('front.carrito.checkoutConekta', ['total' => $total, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng, 'user' => $user]);
     }
 
     public function postCheckoutConekta(Request $request, $leng = 'esp') {

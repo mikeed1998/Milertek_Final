@@ -471,6 +471,9 @@
                                 </div>
                             </div>   
                             @endforeach
+              
+                                
+                        
                         @else 
                             @if ($leng == 'eng')
                                 <h2>There are not products avaible</h2>
@@ -481,9 +484,11 @@
                         
                         
                              
-                            
+                        <div class="col-10 mt-5 position-absolute top-100 start-0 text-center">
+                            {{ $productos->links() }}
+                        </div>    
                               
-                    
+                        
                   
                     </div>
                     <div class="row js-filter oculta" style="display: none;">
@@ -500,8 +505,10 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            
         </div>
     </div>
 </div>

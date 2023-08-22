@@ -400,8 +400,14 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="descripcion">Description</label>
+                                            <label for="descripcion">Description [ESP]</label>
                                             <textarea name="descripcion" id="" cols="30" rows="8" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col">
+                                            <label for="descripcion_en">Description [ENG]</label>
+                                            <textarea name="descripcion_en" id="" cols="30" rows="8" class="form-control" required></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -581,14 +587,20 @@
                                     @csrf
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="certificacion">Certificación</label>
+                                            <label for="certificacion">Certification</label>
                                             <input type="text" name="certificacion" class="form-control" placeholder="Ingresa el nombre de la certificación" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="descripcion">Descripción</label>
+                                            <label for="descripcion">Description [ESP]</label>
                                             <textarea name="descripcion" id="" cols="30" rows="8" class="form-control" placeholder="Ingresa una breve descripción de la certificación." required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col">
+                                            <label for="descripcion_en">Description [ENG]</label>
+                                            <textarea name="descripcion_en" id="" cols="30" rows="8" class="form-control" placeholder="Ingresa una breve descripción de la certificación." required></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">

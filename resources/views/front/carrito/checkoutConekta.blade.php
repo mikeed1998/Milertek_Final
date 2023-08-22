@@ -179,6 +179,8 @@
             </div>
 
 
+@if($user->name != '' and $user->lastname != '' and $user->username != '' and $user->telefono != '')
+
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col text-center text-white display-5 fw-bolder py-3">{{ ($leng == 'eng') ? 'Checkout' : 'Finalizar compra' }}</div>
@@ -239,6 +241,17 @@
         </div>
     </div>
 </div>
+
+@else 
+    <div class="container bg-danger py-5" style="border-radius: 26px;">
+        <div class="row py-5">
+            <div class="col text-center text-white display-5 py-5">
+                {{ ($leng == 'eng') ? 'You cannot complete the payment because your profile data is not complete' : 'No puedes completar el pago debido a que tus datos de perfil no estan completos' }}
+            </div>
+        </div>
+    </div>
+@endif
+
 @endsection
 
 @section('jqueryExtra')

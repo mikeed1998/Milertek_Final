@@ -638,6 +638,7 @@ class SeccionController extends Controller
         $validator = Validator::make($request->all(), [
             'anio' => 'required',
             'descripcion' => 'required',
+            'descripcion_en' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -648,6 +649,7 @@ class SeccionController extends Controller
 
         $fecha->anio = $request->anio;
         $fecha->texto = $request->descripcion;
+        $fecha->texto_en = $request->descripcion_en;
 
         $fecha->save();
         \Toastr::success('Guardado');

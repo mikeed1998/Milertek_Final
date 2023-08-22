@@ -131,7 +131,7 @@ class FrontController extends Controller
 
 	public function productos($leng = 'esp') {
 		$elements = Elemento::all();
-		$productos = MProductos::all();
+		$productos = MProductos::paginate(6);
 		$categorias = MCategorias::all();
 
 

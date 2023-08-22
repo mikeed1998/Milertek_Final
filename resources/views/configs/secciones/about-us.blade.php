@@ -400,8 +400,14 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="descripcion">Descripción</label>
+                                            <label for="descripcion">Descripción [ESP]</label>
                                             <textarea name="descripcion" id="" cols="30" rows="8" class="form-control" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col">
+                                            <label for="descripcion_en">Descripción [ENG]</label>
+                                            <textarea name="descripcion_en" id="" cols="30" rows="8" class="form-control" required></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -587,8 +593,14 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="descripcion">Descripción</label>
+                                            <label for="descripcion">Descripción [ESP]</label>
                                             <textarea name="descripcion" id="" cols="30" rows="8" class="form-control" placeholder="Ingresa una breve descripción de la certificación." required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col">
+                                            <label for="descripcion_en">Descripción [ENG]</label>
+                                            <textarea name="descripcion_en" id="" cols="30" rows="8" class="form-control" placeholder="Ingresa una breve descripción de la certificación." required></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
