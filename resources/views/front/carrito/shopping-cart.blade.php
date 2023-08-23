@@ -224,12 +224,15 @@
                                 <p class="text-white">
                                     {{ ($leng == 'eng') ? 'Amount: ' : 'Cantidad: ' }} {{ $prod['qty'] }}
                                 </p>
-                            </div>
+                            </div> 
                             <div class="col-md-1 col-lg-1 col-xl-1 offset-lg-1">
                                 <h5 class="mb-0 text-white fw-bold">${{ $prod['price'] }}</h5>
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
                                 <div class="row">
+                                <div class="col-12 py-1">
+                                        <a href="{{ route('addToCart', ['id' => $prod['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp', 'pag' => 'shopping']) }}" class="btn w-100 btn-sm btn-small bg-dark text-white" style="border-radius: 16px;">{{ ($leng == 'eng') ? 'Add One' : 'Agregar uno' }}</a>
+                                    </div>
                                     <div class="col-12 py-1">
                                         <a href="{{ route('reduceByOne', ['id' => $prod['item']['id'], 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn w-100 btn-sm btn-small bg-dark text-white" style="border-radius: 16px;">{{ ($leng == 'eng') ? 'Remove One' : 'Quitar uno' }}</a>
                                     </div>

@@ -51,11 +51,11 @@ Route::get('/perfil/{leng?}', 'UserController@getProfile')->name('user.profile')
 Route::get('/logout/{leng?}', 'UserController@getLogout')->name('user.logout')->middleware('auth');
 
 // CARRITO DE COMPRAS
-Route::get('/add-to-cart/{id}/{leng?}', 'CarritoController@getAddToCart')->name('addToCart')->middleware('auth');
+Route::get('/add-to-cart/{id}/{leng?}/{pag?}', 'CarritoController@getAddToCart')->name('addToCart')->middleware('auth');
 Route::get('/shopping-cart/{leng?}', 'CarritoController@getCart')->name('shoppingCart')->middleware('auth');
 Route::get('/reduce/{id}/{leng?}', 'CarritoController@getReduceByOne')->name('reduceByOne')->middleware('auth');
 Route::get('/remove/{id}/{leng?}', 'CarritoController@getRemoveItem')->name('remove')->middleware('auth');
-
+ 
 // PASARELA DE PAGOS 
 Route::get('checkoutStripe/{leng?}', 'CarritoController@getCheckoutStripe')->name('checkoutStripe')->middleware('auth');
 Route::post('checkoutStripe/{leng?}', 'CarritoController@postCheckoutStripe')->name('checkoutStripe')->middleware('auth');

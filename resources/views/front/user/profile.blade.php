@@ -300,7 +300,7 @@
                                             <img src="{{ asset('img2/photos/productos/galeria/'.$item['item']['foto_principal']) }}" alt="" class="img-fluid w-100">
                                         </div>
                                         <div class="col-9 mt-4">
-                                            {{ $item['item']['nombre'] }}
+                                            {{ ($leng == 'eng') ? $item['item']['nombre_en'] : $item['item']['nombre'] }}
                                         </div>
                                     </div>
                                 </div>

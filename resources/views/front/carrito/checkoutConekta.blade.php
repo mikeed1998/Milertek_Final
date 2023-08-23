@@ -181,16 +181,16 @@
 
 @if($user->name != '' and $user->lastname != '' and $user->username != '' and $user->telefono != '')
 
-<div class="container mt-5 mb-5">
+<div class="container-fluid mt-5 mb-5">
     <div class="row">
         <div class="col text-center text-white display-5 fw-bolder py-3">{{ ($leng == 'eng') ? 'Checkout' : 'Finalizar compra' }}</div>
     </div>
 	<div class="row">
-        <div class="col-6 bg-white p-5 mx-auto" style="border: 2px solid black; border-radius: 16px;">
+        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-9 col-sm-12 col-xs-12 col-12 bg-white p-5 mx-auto" style="border: 2px solid black; border-radius: 16px;">
             <form action="{{ route('postcheckoutConekta', ['leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" method="POST" id="card-form">
                 @csrf
         
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <div class="col-9">
                         
                         <img src="https://uploads-ssl.webflow.com/60ba7edb928ca1af6fd7612e/621e7b30da832e994d0200a7_Conekta_Imagotipo_Color-01.svg" alt="">
@@ -231,8 +231,48 @@
                     <div class="mt-4 col-5 fs-5 text-center">
                         <button class="btn w-100 btn-outline text-white fw-bolder fs-5" type="submit" style="background-color: #00AD61; box-shadow: none;">{{ ($leng == 'eng') ? 'Finish Payment' : 'Finalizar Pago' }}</button>
                     </div>
-                </div>
-        
+                </div> --}}
+                
+                <span class="card-errors bg-danger text-white py-2 rounded"></span>
+	  			<div class="form-group py-2 mt-2">
+    				<div class="col">
+						<input class="form-control" size="20" data-conekta="card[number]" type="text" style="border: 2px solid #4866E0; box-shadow: none;" placeholder="{{ ($leng == 'eng') ? 'Credit Card Number    ' : 'Número de tarjeta de crédito' }}">
+					</div>
+  				</div>
+				<div class="form-group py-4">
+					<div class="row">
+						<div class="col-6">
+							<div class="row">
+								<div class="col-6">
+									<input size="2" maxlength="2" class="form-control" data-conekta="card[exp_month]" type="text" style="border: 2px solid #4866E0; box-shadow: none;" placeholder="{{ ($leng == 'eng') ? 'Month/exp' : 'Mes/exp' }}">
+								
+								</div>
+								<div class="col-6">
+									
+									<input  size="4" maxlength="4" class="form-control" data-conekta="card[exp_year]" type="text" style="border: 2px solid #4866E0; box-shadow: none;" placeholder="{{ ($leng == 'eng') ? 'Year/exp' : 'Año/exp' }}">
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<input class="form-control" maxlength="4" size="4" data-conekta="card[cvc]" type="text" style="border: 2px solid #4866E0; box-shadow: none;" placeholder="CVV">
+						</div>
+					</div>
+				</div>
+				<div class="form-group py-2">
+					<div class="col">
+						<input class="form-control" size="20" data-conekta="card[name]" type="text" style="border: 2px solid #4866E0; box-shadow: none;" placeholder="{{ ($leng == 'eng') ? 'Cardholder Name' : 'Nombre del tarjetahambient' }}" >
+					</div>
+				</div>
+				<div class="form-group py-2">
+					<div class="col">
+						<button class="btn w-100 fs-5" style="color: white; background-color: #4866E0;" type="submit" >{{ ($leng == 'eng') ? 'Finish Payment' : 'Finalizar Pago' }}</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col text-center">
+						<img src="{{ asset('img/conekta.png') }}" alt="" class="img-fluid">
+					</div>
+				</div>
                   
                 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         

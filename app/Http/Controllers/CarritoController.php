@@ -16,7 +16,7 @@ use App\MOrder;
 
 class CarritoController extends Controller
 {
-    public function getAddToCart(Request $request, $id, $leng = 'esp') {
+    public function getAddToCart(Request $request, $id, $leng = 'esp', $pag ='') {
         $product = MProductos::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Carrito($oldCart);
@@ -24,7 +24,12 @@ class CarritoController extends Controller
 
         $request->session()->put('cart', $cart);
         // dd($request->session()->get('cart'));
-        return redirect()->route('front.productos_detalle', ['producto' => $id, 'leng' => $leng]);
+
+        if($pag == 'shopping') {
+            return redirect()->route('shoppingCart', ['leng' => $leng]);
+        } else {
+            return redirect()->route('front.productos_detalle', ['producto' => $id, 'leng' => $leng]);
+        }
     }
 
     public function getReduceByOne($id, $leng = 'esp') {
@@ -57,7 +62,7 @@ class CarritoController extends Controller
 
     public function getCart($leng = 'esp') {
         $pagina = 'carrito';
-
+ 
         $data = Configuracion::first();
         if(!Session::has('cart')) {
             return view('front.carrito.shopping-cart', ['products' => null, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng]);
