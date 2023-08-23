@@ -100,6 +100,7 @@
                     <a href="" class="px-2 mt-4" uk-icon="icon: whatsapp; ratio: 1.6;" style="color: #44B2E3;"></a>
                     <a href="" class="px-2 mt-4" uk-icon="icon: facebook; ratio: 1.6;" style="color: #44B2E3;"></a>
                     <a href="" class="px-2 mt-4" uk-icon="icon: instagram; ratio: 1.6;" style="color: #44B2E3;"></a>
+                    {{-- <a href=""><i class="fa-brands fa-whatsapp"></i></a> --}}
                 </div>
             </div>
             

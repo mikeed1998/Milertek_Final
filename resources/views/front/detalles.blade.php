@@ -458,12 +458,27 @@
 									@endif
 								</div>
 							</div>
+							
+<div class="row">
+    <div class="col text-center text-white fs-5">
+      @if($msg)
+      <div class="alert alert-danger">
+          {{ $msg }}
+      </div>
+      @else
+      @endif
+    </div>
+</div>
 							<div class="row">
 								<div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-6 col-12 text-center py-xxl-5 py-xl-5 py-lg-5 py-md-5 py-sm-5 py-xs-5 py-2">
 									<a href="{{ route('front.productos') }}" class="btn w-100 btn-outline px-5" style="border: 2px dashed #1E4A89; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Go back" : "Regresar" }}</small></a>
 								</div>
 								<div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-6 col-12 py-xxl-5 py-xl-5 py-lg-5 py-md-5 py-sm-5 py-xs-5 py-2">
-									<a href="{{ route('addToCart', ['id' => $producto->id, 'leng' => ($leng == 'eng') ? 'eng' : 'esp']) }}" class="btn w-100 btn-outline px-4" style="border: 2px dashed #44B2E3; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Buy Product" : "Comprar Producto" }}</small></a>
+									@if ($producto->stock == 0)
+										<button type="button" disabled class="btn w-100 btn-outline px-4" style="border: 2px dashed red; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Sold Out" : "Producto Agotado" }}</small></button>
+									@else
+										<a href="{{ route('addToCart', ['id' => $producto->id, 'leng' => ($leng == 'eng') ? 'eng' : 'esp', 'pag' => 'productos_detalle']) }}" class="btn w-100 btn-outline px-4" style="border: 2px dashed #44B2E3; border-radius: 26px; color: #1E4A89;"><small>{{ ($leng == 'eng') ? "Buy Product" : "Comprar Producto" }}</small></a>
+									@endif
 								</div>
 							</div>
 							<div class="row py-xxl-0 py-xl-0 py-lg-0 py-md-0 py-sm-0 py-xs-0 py-3">

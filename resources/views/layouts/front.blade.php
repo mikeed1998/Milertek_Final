@@ -28,6 +28,18 @@
 	<!-- UIkit CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
 
+{{-- 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Blinker:wght@300&family=Poppins:wght@100&display=swap" rel="stylesheet">
+
+   <style>
+        * {
+            font-family: 'poppins', sans-serif;
+        }
+    </style> --}}
+
 	@yield('jsLibExtras')
 
 	@yield('cssExtras')

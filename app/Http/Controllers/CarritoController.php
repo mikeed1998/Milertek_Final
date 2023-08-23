@@ -18,9 +18,29 @@ class CarritoController extends Controller
 {
     public function getAddToCart(Request $request, $id, $leng = 'esp', $pag ='') {
         $product = MProductos::find($id);
+
+        if($product->stock == 0) {
+            if($leng == 'eng') {
+                $msg = "Error, you cannot add another one since the product: - " . $product->nombre . " - is out of stock.";
+            } else {
+                $msg = "Error, no puedes agregar otro ya que el producto: - " . $product->nombre . " - se encuentra agotado.";
+            }
+
+            if($pag == 'productos_detalle') {
+                return redirect()->route('front.productos_detalle', ['producto' => $id, 'leng' => $leng, 'msg' => $msg]);
+            } else {
+                return redirect()->route('shoppingCart', ['leng' => $leng, 'msg' => $msg]);
+            }
+
+            
+        }
+
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Carrito($oldCart);
         $cart->add($product, $product->id);
+
+        $product->stock--;
+        $product->update();
 
         $request->session()->put('cart', $cart);
         // dd($request->session()->get('cart'));
@@ -33,9 +53,13 @@ class CarritoController extends Controller
     }
 
     public function getReduceByOne($id, $leng = 'esp') {
+        $product = MProductos::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Carrito($oldCart);
         $cart->reduceByOne($id);
+
+        $product->stock++;
+        $product->update();
 
         if(count($cart->items) > 0) {
             Session::put('cart', $cart);
@@ -47,8 +71,13 @@ class CarritoController extends Controller
     }
 
     public function getRemoveItem($id, $leng = 'esp') {
+        $product = MProductos::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Carrito($oldCart);
+
+        $product->stock += $cart->items[$id]['qty'];
+        $product->update();
+
         $cart->removeItem($id);
 
         if(count($cart->items) > 0) {
@@ -60,17 +89,17 @@ class CarritoController extends Controller
         return redirect()->route('shoppingCart', ['leng' => $leng]);
     }
 
-    public function getCart($leng = 'esp') {
+    public function getCart($leng = 'esp', $msg = '') {
         $pagina = 'carrito';
  
         $data = Configuracion::first();
         if(!Session::has('cart')) {
-            return view('front.carrito.shopping-cart', ['products' => null, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng]);
+            return view('front.carrito.shopping-cart', ['products' => null, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng, 'msg' => $msg]);
         }
 
         $oldCart = Session::get('cart');
         $cart = new Carrito($oldCart);
-        return view('front.carrito.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng]);
+        return view('front.carrito.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'data' => $data, 'pagina' => $pagina, 'leng' => $leng, 'msg' => $msg]);
     }
 
     public function getCheckoutStripe($leng = 'esp') {

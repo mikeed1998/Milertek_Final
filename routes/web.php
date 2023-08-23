@@ -22,7 +22,7 @@ Route::name('front.')->group(function(){
 	Route::get('/home/{leng?}', 'FrontController@index')->name('index');
 	Route::get('nosotros/{leng?}', 'FrontController@aboutus')->name('aboutus');
 	Route::get('productos/{leng?}', 'FrontController@productos')->name('productos');
-	Route::get('productos_detalle/{producto}/{leng?}', 'FrontController@productos_detalle')->name('productos_detalle');
+	Route::get('productos_detalle/{producto}/{leng?}/{msg?}', 'FrontController@productos_detalle')->name('productos_detalle');
 	Route::get('servicios/{leng?}', 'FrontController@servicios')->name('servicios');
 	Route::post('getServicio', 'FrontController@getServicio')->name('getServicio');
 	Route::get('contacto/{leng?}', 'FrontController@contacto')->name('contacto');
@@ -52,11 +52,11 @@ Route::get('/logout/{leng?}', 'UserController@getLogout')->name('user.logout')->
 
 // CARRITO DE COMPRAS
 Route::get('/add-to-cart/{id}/{leng?}/{pag?}', 'CarritoController@getAddToCart')->name('addToCart')->middleware('auth');
-Route::get('/shopping-cart/{leng?}', 'CarritoController@getCart')->name('shoppingCart')->middleware('auth');
+Route::get('/shopping-cart/{leng?}/{msg?}', 'CarritoController@getCart')->name('shoppingCart')->middleware('auth');
 Route::get('/reduce/{id}/{leng?}', 'CarritoController@getReduceByOne')->name('reduceByOne')->middleware('auth');
 Route::get('/remove/{id}/{leng?}', 'CarritoController@getRemoveItem')->name('remove')->middleware('auth');
  
-// PASARELA DE PAGOS 
+// PASARELA DE PAGOS
 Route::get('checkoutStripe/{leng?}', 'CarritoController@getCheckoutStripe')->name('checkoutStripe')->middleware('auth');
 Route::post('checkoutStripe/{leng?}', 'CarritoController@postCheckoutStripe')->name('checkoutStripe')->middleware('auth');
 

@@ -196,6 +196,16 @@
 
 
 
+<div class="row">
+    <div class="col text-center text-white fs-5">
+      @if($msg)
+      <div class="alert alert-danger">
+          {{ $msg }}
+      </div>
+      @else
+      @endif
+    </div>
+</div>
 <div class="row bg-white">
     <section class="py-5" style="background-color: rgba(51, 120, 198, 0.22);">
         <div class="container py-0">
@@ -249,9 +259,9 @@
                 <div class="card-body text-white">
                     <strong>
                         @if ($leng == 'eng')
-                Total of all products: {{ $totalPrice }}
+                Total of all products: ${{ $totalPrice }}
             @else
-                Total de todos los productos: {{ $totalPrice }}
+                Total de todos los productos: ${{ $totalPrice }}
             @endif
                     </strong>
                 </div>

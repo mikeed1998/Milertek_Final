@@ -150,7 +150,7 @@ class FrontController extends Controller
 		return view('front.productos', compact('elements', 'pagina', 'productos', 'categorias', 'productosCont', 'categoriasCont', 'leng'));
 	}
 
-	public function productos_detalle(MProductos $producto, $leng = 'esp') {
+	public function productos_detalle(MProductos $producto, $leng = 'esp', $msg = '') {
 		$caracteristicas = MCaracteristicaProducto::all();
 		$galeria = MGaleriaProducto::all();
 		$categorias = MCategorias::all();
@@ -199,7 +199,7 @@ class FrontController extends Controller
 
 		$pagina = "productos_detalle";
 
-		return view('front.detalles', compact('pagina', 'producto', 'categorias', 'productos', 'productosCont', 'categoriasCont', 'auxC', 'caraArray', 'caraArray_en', 'galeria_fotos', 'leng'));
+		return view('front.detalles', compact('pagina', 'producto', 'categorias', 'productos', 'productosCont', 'categoriasCont', 'auxC', 'caraArray', 'caraArray_en', 'galeria_fotos', 'leng', 'msg'));
 	}
 
 	public function getServicio(Request $request){

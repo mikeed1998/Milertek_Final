@@ -16,5 +16,7 @@ class MProductos extends Model
         'precio_usd',
         'ficha_tecnica',
         'foto_principal',
+        'stock',
+        'sku',
     ];
 }
