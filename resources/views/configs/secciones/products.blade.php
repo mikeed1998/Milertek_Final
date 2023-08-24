@@ -422,11 +422,15 @@
                                             <label for="descripcion_en" class="fs-5">Description [EN]</label>
                                             <textarea name="descripcion_en" id="" cols="30" rows="6" class="form-control" placeholder="Description"></textarea>
                                         </div>
-                                        <div class="col-5 mx-auto py-2">
+                                        <div class="col-4 mx-auto py-2">
+                                            <label for="stock" class="fs-5">Existencias</label>
+                                            <input type="number" name="stock" placeholder="Productos disponibles" class="form-control" required>
+                                        </div>
+                                        <div class="col-4 mx-auto py-2">
                                             <label for="precio_mxn" class="fs-5">Precio (MXN)</label>
                                             <input type="number" name="precio_mxn" placeholder="Precio del producto" class="form-control" required>
                                         </div>
-                                        <div class="col-5 mx-auto py-2">
+                                        <div class="col-4 mx-auto py-2">
                                             <label for="precio_usd" class="fs-5">Equivalente (USD)</label>
                                             <input type="number" name="precio_usd" placeholder="Equivalente en dolares" class="form-control" required>
                                         </div>
@@ -586,12 +590,16 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row">
-                                                                                    <div class="col-12 mt-5 fs-5 text-center">Modificar precio</div>
-                                                                                    <div class="col-5 text-start mx-auto py-2">
+                                                                                    <div class="col-12 mt-5 fs-5 text-center"></div>
+                                                                                    <div class="col-4 text-start mx-auto py-2">
+                                                                                        <label class="fs-5">Actualizar Existencias</label>
+                                                                                        <textarea class="form-control bg-transparent text-start editarajax m-0" id="" rows="1" data-id="{{ $pd->id }}" data-table="MProductos" data-campo="stock" style="line-height: 1.1;">{{  $pd->stock  }}</textarea> 
+                                                                                    </div>
+                                                                                    <div class="col-4 text-start mx-auto py-2">
                                                                                         <label class="fs-5">Precio (MXN)</label>
                                                                                         <textarea class="form-control bg-transparent text-start editarajax m-0" id="" rows="1" data-id="{{ $pd->id }}" data-table="MProductos" data-campo="precio_mxn" style="line-height: 1.1;">{{  $pd->precio_mxn  }}</textarea> 
                                                                                     </div>
-                                                                                    <div class="col-5 text-start mx-auto py-2">
+                                                                                    <div class="col-4 text-start mx-auto py-2">
                                                                                         <label class="fs-5">Equivalente (USD)</label>
                                                                                         <textarea class="form-control bg-transparent text-start editarajax m-0" id="" rows="1" data-id="{{ $pd->id }}" data-table="MProductos" data-campo="precio_usd" style="line-height: 1.1;">{{  $pd->precio_usd  }}</textarea> 
                                                                                     </div>

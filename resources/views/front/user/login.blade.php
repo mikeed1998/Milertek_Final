@@ -183,7 +183,7 @@
 
 								<div class="form-group row mb-0">
 									<div class="d-flex justify-content-center text-center flex-column">
-										<button type="submit" class="btn btn-primary col-12 my-3" style="background-color: #3378C6; border-radius: 16px; border:none;">
+										<button type="submit" class="btn btn-primary col-12 my-3" style="background-color: #3378C6; color: white; border-radius: 16px; border:none;">
 											{{ ($leng == 'eng') ? __('Sign In') :  __('Entrar') }}
 										</button>
 										{{-- @if (Route::has('password.request'))
@@ -195,13 +195,13 @@
 								</div>
 							</form>
 
-							<p class="card-text text-center">
+							<p class="card-text text-center text-white">
 								@if ($leng == 'eng')
-                                    <a href="{{ route('user.register', ['leng' => 'eng']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
+                                    <a href="{{ route('user.register', ['leng' => 'eng']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none; color: white;">
 						    			{{ __('Signup here') }}
 					    			</a>
                                 @else 
-                                    <a href="{{ route('user.register', ['leng' => 'esp']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none;">
+                                    <a href="{{ route('user.register', ['leng' => 'esp']) }}" class="btn btn-sm btn-indigo px-4 py-1" style="background-color: #3378C6; border-radius: 16px; border:none; color: white;">
 			    						{{ __('Regístrate aquí') }}
 		    						</a>
                                 @endif

@@ -375,6 +375,7 @@ class SeccionController extends Controller
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
         $producto->nombre_en = $request->nombre_en;
+        $producto->stock = $request->stock;
         $producto->descripcion_en = $request->descripcion_en;
         $producto->precio_mxn = $request->precio_mxn;
         $producto->precio_usd = $request->precio_usd;
